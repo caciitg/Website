@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Summer Analytics 2021 | Consulting & Analytics Club, IIT Guwahati</title>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+  crossorigin="anonymous"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  <!--===============================================================================================-->
+
+</head>  
+  <body > 
+    <img  src="images/Frame 5.svg" width="100%" height="auto" style="margin-top:0%;">
+    
+  <div class="section-layout">
+   
+   <nav class="navigation" id="navigation">
+      <!--<div class="sponsor-nav">
+	<h3 style="margin-top:0.45em; font-size:1.9vw; font-weight:600">Webinar-II</h3>
+	<p class="backbutton" style="padding:0.5vw 0vw;font-size: 1vw;letter-spacing: 1.8px;font-weight: 580;text-align: center;"><a href="https://youtu.be/zq6L2l8lxiY" target="_blank"><img class="sponsor-logo" style="max-width:85%;height:auto" src="./images/Webinar 2.png"></a></p>
+	<p class="backbutton" style="padding:1vw 0vw 0.1vw;font-size: 1vw;letter-spacing: 1.8px;font-weight: 580;text-align: center;"><a href="https://youtu.be/zq6L2l8lxiY" target="_blank" style="text-decoration:none; color:inherit; letter-spacing:0.2vw"><strong>Exploratory Data Analysis</strong></a></p>
+<p style="text-align:left; font-size:0.8vw; font-weight:500; letter-spacing:0vw">For the second webinar of the year on fundamentals of data science, we invite you to a session on <a href="https://youtu.be/zq6L2l8lxiY" target="_blank" style="text-decoration:none;"><strong>Exploratory Data Analysis</strong></a>. <br>Conducting the webinar will be the brilliant <a href="https://www.linkedin.com/in/usha-rengaraju-b570b7a2" target="_blank" style="text-decoration:none;">Usha Rengaraju</a>, <em>India's 1st Woman Grandmaster</em> on Kaggle, and Principal Data Scientist at Infinite Sum Modelling. <br>Don't miss out on the exclusive experience at <br><strong>6 PM, 20 June 2021 (IST)</strong>! Click the image above to access the webinar.
+<br> <a href="https://www.linkedin.com/feed/update/urn:li:activity:6810896694931189761/" target="_blank" style="text-decoration:none;">Comment your email-ID here</a> to get notified on the day of the webinar.</p>
+</div>-->
+
+      <!--<div class="sponsor-nav" style="margin: 0vw -2vw 0vw; padding: 1vw;">
+	<h3 style="margin-top:0.45em; font-size:1.9vw; font-weight:600">Webinars:</h3>
+	<p class="backbutton" style="padding:1vw 0vw 0.1vw;font-size: 0.8vw;letter-spacing: 0px;font-weight: 580;text-align: center;"><a href="https://youtu.be/DZ82f6wk8T4" target="_blank" style="text-decoration:none; letter-spacing:0.05vw"><strong>Feature Engineering - Joinal Ahmed</strong></a></p>
+	<p class="backbutton" style="padding:1vw 0vw 0.1vw;font-size: 0.8vw;letter-spacing: 0px;font-weight: 580;text-align: center;"><a href="https://youtu.be/zq6L2l8lxiY" target="_blank" style="text-decoration:none; letter-spacing:0.05vw"><strong>Exploratory Data Analysis - Usha Rengaraju</strong></a></p>
+</div>-->
+
+      <button class="nav-link " onclick="openWeek(event, 'week1')" id="defaultOpen">Week 1</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week2')">Week 2</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week3')">Week 3</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week4')">Week 4</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week5')">Week 5</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week6')">Week 6</button>
+      <button class="nav-link disabled" onclick="openWeek(event, 'week7')">Additional Material</button>
+<div class="mob-separator" style="position: relative; width: 100%; align-items: center; text-align: center"></div>
+
+      <div class="sponsor-nav" style="padding:1em 0em;">
+	<a href="https://infiniteanalytics.com/" target="_blank"><img class="sponsor-logo" src="aa.png" style="max-width: 80%"></a>
+	<a href="https://infiniteanalytics.com/" target="_blank" style="text-decoration:none; color:inherit; font-size:130%; font-weight:500"><br>Corporate Partner</a>
+<!--<p style="text-align:left; font-size:0.8vw; font-weight:500; letter-spacing:0vw"><br>DPhi is a community with a vision to build a culture of data through courses, practice, competitions and discussion forums, and gamify the entire learning experience.</p>-->
+      </div>
+
+  <!--<div class="sponsor-nav" style="position: relative; filter: contrast(20) blur(1px); word-wrap:break-word;">
+ <div class="morphing" style="text-align: center;">
+      <p class="frame" style="padding:2vw 1.3vw; text-align:center;">Liked the course material?</p>
+      <p class="frame" style="padding:2vw 1.3vw; text-align:center;">Click here to share your feedback!</p>
+	</div>
+  </div>-->
+
+  <!--<button class="nav-link" style="position: relative;  width:2px; padding:2vw 1.3vw; 
+  text-align:center; font-size:150%; font-weight:600">
+    <a href="https://rzp.io/l/sa21contribute" target="_blank" style="text-decoration:none; color:inherit">
+      Liked the course? <br><span >Contribute to SA's future!</span></a>
+  </button>-->
+    </nav>
+    
+   <div class="right-content">
+    <div id='week1' class="tabcontent" >
+    <div class="limiter">
+      <div class="container-table100">
+        <div class="wrap-table100">
+    <div class="table100 ver3 m-b-110">
+      <table data-vertable="ver3">
+        <thead>
+          <tr class="row100 head">
+            <th class="column100 column1" data-column="column1" style="background-color:#055F65">Week 1</th>
+            <th class="column100 column2" data-column="column1" style="background-color:#055F65">What's in there?</th>
+            <th class="column100 column3" data-column="column2" style="background-color:#055F65">Task 1</th>
+            <th class="column100 column4" data-column="column3" style="background-color:#055F65">Task 2</th>
+            <th class="column100 column5" data-column="column4" style="background-color:#055F65">Task 3</th>          
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 0</td>
+            <td class="column100 column2" data-column="column1">Getting Started <br/> Set up your environment </td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/windows/'>Anaconda Installation for Windows <i class="fas fa-external-link-alt"></i>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/mac-os/'>Anaconda Installation for Mac <i class="fas fa-external-link-alt"></i>
+            </a></td>
+            <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/linux/'>Anaconda Installation for Linux <i class="fas fa-external-link-alt"></i>
+            </a></td>
+          </tr>
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 1</td>
+            <td class="column100 column2" data-column="column1">Hey, excited?<br/> Welcome to Summer Analytics 2021. <br/>We'll start this amazing journey by peeking into basics of <strong>Python</strong>.</td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7'>Python Programming <br/>Beginner Tutorials <br/> (Videos 1 - 10) <i class="fas fa-external-link-alt"></i>
+            </a></td>
+            <td class="column100 column4" data-column="column3">---</td>
+            <td class="column100 column5" data-column="column4">---</td>
+          </tr>
+
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 2</td>
+            <td class="column100 column2" data-column="column1">Let's look into <strong>Numpy</strong>, the scientific computing library of Python. It will save you from doing heavy mathematical calculations. Also, let's get a brief overview of <strong>Pandas</strong>.</td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://youtu.be/QUT1VHiLmmI'>Intro to Numpy <i class="fas fa-external-link-alt"></i>
+            </a></td>
+            <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y'>Intro to Pandas<br>(vid 1-10) <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column5" data-column="column4">---</td>
+          </tr>
+
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 3</td>
+            <td class="column100 column2" data-column="column1">Missing values, outlier data can trouble you. Let us introduce <strong>Pandas</strong>-the most famous data manipulation library in python.</td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y'>Data Analysis with Pandas <br/>(Videos 11 - 25) <br/> Optional- (25 - 33) <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column4" data-column="column3">---</td>
+            <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://drive.google.com/drive/folders/1oy14yZRbuLMAT8nhJcuelSn2e9mEC5Ev?usp=sharing'><strong>Ungraded</strong> Assignment <i class="fas fa-external-link-alt"></i></a></td>
+          </tr>
+
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 4</td>
+            <td class="column100 column2" data-column="column1"><strong>Data visualization</strong> gives us a clear idea of what the information means by giving it visual context through maps or graphs. <strong>Matplotlib</strong> and <strong>Seaborn</strong> are widely used for Data Visualization. Let's Explore!</td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=MbKrSmoMads'>Intro to Matplotlib <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column4" data-column="column3">
+            	<li><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PLBfyvFO_aKGRaJmdo501Hu_wXwgmjbR50'>Intro to Seaborn <i class="fas fa-external-link-alt"></i></a><br/><br/>
+              <li><a class="links" target="_blank" href='https://www.klipfolio.com/resources/articles/what-is-data-visualization'>Data Visualization <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column5" data-column="column4">
+            	<li><a class="links" target="_blank" href='https://jakevdp.github.io/PythonDataScienceHandbook/04.14-visualization-with-seaborn.html'>Visualizations With Seaborn(Refresher) <i class="fas fa-external-link-alt"></i></a><br/><br/>
+              <li><a class="links" target="_blank" href='https://towardsdatascience.com/data-visualization-using-matplotlib-16f1aae5ce70'>Visualizations With Matplotlib(Refresher)  <i class="fas fa-external-link-alt"></i></a></td>
+            
+          </tr>
+
+          <tr class="row100">
+            <td class="column100 column1" data-column="column1">Day 5</td>
+            <td class="column100 column2" data-column="column1">Dealing with large tables of data can be overwhelming! Just observing the rows of tables won't lead us anywhere. But fortunately we can smartly summarize data via "Number Summaries" (a.k.a. <strong>Descriptive Statistics</strong>)</td>
+            <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://towardsdatascience.com/data-types-in-statistics-347e152e8bee'>Data Types in Statistics <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=mk8tOD0t8M0'>Measures of Central Tendency, Range and St. Deviation  <i class="fas fa-external-link-alt"></i></a></td>
+            <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=tpToLyZibKM'>Box Plots and Outliers <i class="fas fa-external-link-alt"></i></a></td>
+          </tr>
+
+          <!--<tr class="row100">
+              <td class="column100 column1" data-column="column1">Assignments</td>
+            <td class="column100 column2" data-column="column1">Use the <strong>same email-ID</strong> that you registered with, and the <strong>SAME enrolment number</strong> as you received in the registration mail.<br>Refer to the INSTRUCTIONS.pdf in the materials before starting.<br><strong>Adhere to the honor code</strong>.</td>
+              <td class="column100 column2" data-column="column2">Deadline: <br><strong>31st May 2021</strong>, 11:59 PM (IST)</td>
+              <td class="column100 column3" data-column="column3"><a class="links" target="_blank" href="https://drive.google.com/drive/folders/1U_d4lAWYx38oAss8RVHoyaWpF_7AsaPz">Week-1 Assignment <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column4"><a class="links" target="_blank" href="https://forms.gle/PrXoGZ51gVpPTRPM8">Week-1 Quiz <i class="fas fa-external-link-alt"></i></a></td>
+
+            </tr>-->
+        </tbody>
+      </table>
+     <!--</div>
+    <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the main website.</a> 
+    </div>-->
+    </div>
+    </div>
+    </div>
+    <div id='week2' class="tabcontent">
+      <div class="limiter">
+        <div class="container-table100">
+          <div class="wrap-table100">
+      <div class="table100 ver3 m-b-110">
+        <table data-vertable="ver3">
+          <thead>
+            <tr class="row100 head">
+              <th class="column100 column1" data-column="column1">Week 2</th>
+              <th class="column100 column2" data-column="column1">What's in there?</th>
+              <th class="column100 column3" data-column="column2">Task 1</th>
+              <th class="column100 column4" data-column="column3">Task 2</th>
+              <th class="column100 column5" data-column="column4">Task 3</th>          
+            </tr>
+          </thead>
+          <tbody>
+            <!--<tr class="row100">g
+            <td class="column100 column1" data-column="column1">Day 0</td>
+              <td class="column100 column2" data-column="column1">Getting Started <br/> Set up your environment </td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/windows/'>Anaconda Installation for Windows <i class="fas fa-external-link-alt"></i>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/mac-os/'>Anaconda Installation for Mac <i class="fas fa-external-link-alt"></i>
+              </a></td>
+              <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://docs.anaconda.com/anaconda/install/linux/'>Anaconda Installation for Linux <i class="fas fa-external-link-alt"></i>
+              </a></td>
+            </tr>--> 
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Day 1</td>
+              <td class="column100 column2" data-column="column1">Hey, excited for Week 2? Often the data we deal with can have various issues like <strong>missing values</strong> and <strong>outliers</strong>. Today we will learn about basic techniques to deal with such issues!</td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=rzR_cKnkD18'>Outlier Analysis <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column3">
+                <li><a class="links" target="_blank" href='https://www.youtube.com/watch?v=P_iMSYQnqac'>Handling Missing Values <i class="fas fa-external-link-alt"></i></a><br/><br/>
+                <li><a class="links" target="_blank" href='https://www.kaggle.com/debarshichanda/handling-missing-values'>Practical Handling Missing Values <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://towardsdatascience.com/exploratory-data-analysis-8fc1cb20fd15'>What is Exploratory Data Analysis? <i class="fas fa-external-link-alt"></i></a></td>
+            </tr>
+  
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Day 2</td>
+              <td class="column100 column2" data-column="column1">Today we aren't going to be too technical, let us just motivate ourselves about Machine Learning, get to know its application, and have a rudimentary understanding of what <strong>Machine Learning</strong> is.</td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://drive.google.com/file/d/1NCgTcIRcGDpeGS5lnnifpvSpB8mr47PP/view'><strong>[Reading]</strong> Chapter 1<br/> <strong>Page No.  1 - 5</strong>  <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=f_uwKZIAeM0'>What is Machine Learning? <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='https://www.youtube.com/watch?v=xtOg44r6dsE'><strong>Supervised</strong> vs <strong>Unsupervised</strong> vs <strong>Reinforcement</strong> Learning <i class="fas fa-external-link-alt"></i></a></td>
+            </tr>
+  
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Day 3</td>
+              <td class="column100 column2" data-column="column1">Starting at the grassroots level, we study in depth the simplest ML model <strong>Linear Regression</strong>, alongwith <strong>Cost function</strong> and <strong>Gradient Descent</strong>. Don't worry if it sounds too hard, trust us it isn't.</td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://towardsdatascience.com/everything-you-need-to-know-about-linear-regression-b791e8f4bd7a'>Linear Regression Blog <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=kHwlB_j7Hkc&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=4'>Linear Regression with One Variable<br/> Videos 2.1 - 2.6 <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=Dft1cqjwlXE&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=12'>Linear Algebra Review <br>(3.1 - 3.6) [<strong>Optional</strong>, Not required if you have a mathematical base] <i class="fas fa-external-link-alt"></i></a></td>
+
+            </tr>
+  
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Day 4</td>
+              <td class="column100 column2" data-column="column1">Let us spice things up a bit, we study Linear regression again but this time with <strong>Multiple features</strong>.</td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=Q4GNLhRtZNc&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=18'>Linear Regression with Multiple Variables<br/> Videos 4.1 - 4.7 <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://inria.github.io/scikit-learn-mooc/python_scripts/linear_regression_without_sklearn.html'>Linear Regression without Scikit-learn <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://inria.github.io/scikit-learn-mooc/python_scripts/linear_regression_in_sklearn.html'>Linear Regression with Scikit-learn <i class="fas fa-external-link-alt"></i></a></td>
+            </tr>
+  
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Day 5</td>
+              <td class="column100 column2" data-column="column1">Today we will be introduced to our first ever classification model, <strong>Logistic Regression</strong>. Let's get to it.</td>
+              <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=Q4GNLhRtZNc&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=32'>Logistic Regression<br/> Videos 6.1 - 6.7 <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://towardsdatascience.com/introduction-to-logistic-regression-66248243c148'>Logistic Regression Blog <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=71iXeuKFcQM&t=5s&ab_channel=MichaelGalarnyk'>Logistic Regression with Scikit-learn <i class="fas fa-external-link-alt"></i></a></td>
+            </tr>
+  
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Assignments</td>
+              <td class="column100 column2" data-column="column1">Use the <strong>same email-ID</strong> that you registered with, and the <strong>SAME enrolment number</strong> as you received in the registration mail.<br><strong>Adhere to the honor code</strong>.</td>
+	      <td class="column100 column2" data-column="column2">Deadline: <br><strong>9th June 2021</strong>, 11:59 PM (IST)</td>
+              <td class="column100 column3" data-column="column3"><a class="links" target="_blank" href="https://drive.google.com/drive/u/6/folders/1rtpxBS-k4UjHMZTkYs2equ7FvmKFyCAC">Week-2 Assignment <i class="fas fa-external-link-alt"></i></a><br><a class="links" target="_blank" href="https://forms.gle/R9vUZnnyB6BQ74mS7">Week-2 Quiz <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column4"><a class="links" target="_blank" href='https://drive.google.com/drive/folders/1BNXOCNMzihhOoffnV4SSopSWmnbE9u-u?usp=sharing'><strong>Ungraded</strong> Assignment <i class="fas fa-external-link-alt"></i></a></td>
+
+            </tr>
+          </tbody>
+  
+        </table>
+      </div>
+      <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+    </div>
+      </div>
+      </div>
+      </div>
+      <div id='week3' class="tabcontent">
+        <div class="limiter">
+          <div class="container-table100">
+            <div class="wrap-table100">
+        <div class="table100 ver3 m-b-110">
+          <table data-vertable="ver3">
+            <thead>
+              <tr class="row100 head">
+                <th class="column100 column1" data-column="column1">Week 3</th>
+                <th class="column100 column2" data-column="column1">What's in there?</th>
+                <th class="column100 column3" data-column="column2">Task 1</th>
+                <th class="column100 column4" data-column="column3">Task 2</th>
+                <th class="column100 column5" data-column="column4">Task 3</th>          
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 0</td>
+                <td class="column100 column2" data-column="column1">Getting Started <br/> Follow two links on the right before proceeding</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://caciitg.in/sa2020/setting_environment.html'>Setting up your Environent  <i class="fas fa-external-link-alt"></i>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://drive.google.com/file/d/1lqL2xTYAWE2mwXPXhXW1Ptz3sfhh7vPL/view?usp=sharing'>Enrollment Instructions for Coursera  <i class="fas fa-external-link-alt"></i>
+                </a></td>
+                <td class="column100 column5" data-column="column4">---</td>
+              </tr>   -->
+  
+              <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 1</td>
+                <td class="column100 column2" data-column="column1">Since we have covered 2 basic ML models, let us take a break and learn about <strong>Overfitting</strong>, <strong>Underfitting</strong> and the <strong>Bias-Variance Tradeoff</strong>. These can help in telling you the complexity of your model - how well your model has used your data.</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=SjQyLhQIXSM'><strong>[Video]</strong> Bias-Variance Tradeoff (1) <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=EuBBz3bI-aA'><strong>[Video]</strong> Bias-Variance Tradeoff (2) <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://medium.com/@itbodhi/bias-and-variance-trade-off-542b57ac7ff4'><strong>[Blog]</strong> Bias-Variance Tradeoff  <i class="fas fa-external-link-alt"></i></a></td>
+              </tr>
+    
+              <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 2</td>
+                <td class="column100 column2" data-column="column1">Let us now learn what <strong>Regularization</strong> is and what its different types are.</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=u73PU6Qwl1I&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=39'>Regularization<br/> Videos 7.1 - 7.4  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.analyticssteps.com/blogs/l2-and-l1-regularization-machine-learning?fbclid=IwAR1pkL-RKR0xkKkdXtC1Tjcqm7CRX-FTD64U-nwNZYm_qnP2HEhhUdx0wW8'>L1 and L2 Regularization <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='https://www.youtube.com/watch?v=VqKq78PVO9g'>Lasso and Ridge Regression <i class="fas fa-external-link-alt"></i></a></td>
+              </tr>
+    
+              <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 3</td>
+                <td class="column100 column2" data-column="column1">Today, we'll learn the theory behind <strong>SVM</strong> and it's implementation using <strong>Scikit learn</strong>. We will also learn about various <strong>Feature Transformation</strong> techniques.</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=FB5EdxAGxQg'>Support Vector Machines  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/'>Support Vector Machine algorithm<br>(along with code)  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column5" data-column="column4">
+                  <li><a class="links" target="_blank" href='https://www.youtube.com/watch?v=3gfhbXt9TcQ'>All Feature Transformations <i class="fas fa-external-link-alt"></i></a><br/><br/>
+                  <li><a class="links" target="_blank" href='https://www.analyticsvidhya.com/blog/2020/07/types-of-feature-transformation-and-scaling/'>Feature Transformation and Scaling <i class="fas fa-external-link-alt"></i></a>
+                </td>
+              </tr>
+    
+              <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 4</td>
+                <td class="column100 column2" data-column="column1">Today, we'll learn how to encode Categorical values and the basics of <strong>Confusion Matrix</strong>.</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=irHhDMbw3xo'>Label Encoding and One-Hot Encoding <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://pbpython.com/categorical-encoding.html'>Guide to Encoding Categorical Values in Python  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column5" data-column="column4">
+                  <li><a class="links" target="_blank" href='https://www.youtube.com/watch?v=Kdsp6soqA7o'><strong>[Video]</strong> The Confusion Matrix <i class="fas fa-external-link-alt"></i></a><br/><br/>
+                  <li><a class="links" target="_blank" href='https://medium.com/hugo-ferreiras-blog/confusion-matrix-and-other-metrics-in-machine-learning-894688cb1c0a'><strong>[Blog]</strong> Confusion Matrix for Machine Learning  <i class="fas fa-external-link-alt"></i></a>
+                </td>
+                </tr>
+
+              <tr class="row100">
+                <td class="column100 column1" data-column="column1">Day 5</td>
+                <td class="column100 column2" data-column="column1">Today, we'll take a closer look at what the <strong>AUC-ROC Score</strong> is and various other <strong>Evaluation Metrics</strong> to evaluate our machine leaning algorithms.</td>
+                <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=4jRBRDbJemM'><strong>[Video]</strong> AUC-ROC Curve  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.analyticsvidhya.com/blog/2020/06/auc-roc-curve-machine-learning/?fbclid=IwAR3NiyvLoVEQxRCerb5A3YVU8Qtuf9fpnG5ERWGLBQsfKbpvfuccI-7DI7U'><strong>[Blog]</strong> AUC-ROC Curve  <i class="fas fa-external-link-alt"></i></a></td>
+                <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='https://medium.com/ml-cheat-sheet/machine-learning-evaluation-metrics-b89b8832e275'>Evaluation Metrics  <i class="fas fa-external-link-alt"></i></a></td>
+              </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Assignments</td>
+              <td class="column100 column2" data-column="column1">Use the <strong>same email-ID</strong> that you registered with, and the <strong>SAME enrolment number</strong> as you received in the registration mail.<br><strong>Adhere to the honor code</strong>.</td>
+	      <td class="column100 column2" data-column="column2">Deadline: <br><strong>20th June 2021</strong>, 11:59 PM (IST)</td>
+              <td class="column100 column3" data-column="column3"><a class="links" target="_blank" href="https://drive.google.com/drive/folders/18pgk-gLX1lIYaBVaKD4Emy26HTC2PIOq?usp=sharing">Week-3 Assignment <i class="fas fa-external-link-alt"></i></a><br><a class="links" target="_blank" href="https://forms.gle/gvfS7aUaaEgkDsJ96">Week-3 Quiz <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column4"><a class="links" target="_blank" href='https://drive.google.com/folderview?id=1GbAX2BBlGokXqhqJj1oBuwwoTT0eK-cE'><strong>Ungraded</strong> Assignment <i class="fas fa-external-link-alt"></i></a></td>
+              </tr>
+            </tbody>
+    
+          </table>
+        </div>
+        <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+      </div>
+        </div>
+        </div>
+        </div>
+        <div id='week4' class="tabcontent">
+          <div class="limiter">
+            <div class="container-table100">
+              <div class="wrap-table100">
+          <div class="table100 ver3 m-b-110">
+            <table data-vertable="ver3">
+              <thead>
+                <tr class="row100 head">
+                  <th class="column100 column1" data-column="column1">Week 4</th>
+                  <th class="column100 column2" data-column="column1">What's in there?</th>
+                  <th class="column100 column3" data-column="column2">Task 1</th>
+                  <th class="column100 column4" data-column="column3">Task 2</th>
+                  <th class="column100 column5" data-column="column4">Task 3</th>          
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 0</td>
+                  <td class="column100 column2" data-column="column1">Getting Started <br/> Follow two links on the right before proceeding</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://caciitg.in/sa2020/setting_environment.html'>Setting up your Environent  <i class="fas fa-external-link-alt"></i>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://drive.google.com/file/d/1lqL2xTYAWE2mwXPXhXW1Ptz3sfhh7vPL/view?usp=sharing'>Enrollment Instructions for Coursera  <i class="fas fa-external-link-alt"></i>
+                  </a></td>
+                  <td class="column100 column5" data-column="column4">---</td>
+                </tr>   -->
+    
+                <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 1</td>
+                  <td class="column100 column2" data-column="column1">Today, we shall learn about <strong>Decision Trees</strong> which will create the foundation for many advanced Machine Learning Algorithms.</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=_L39rN6gz7Y&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=41'>Decision Trees <br> Videos (41 - 44) <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column4" data-column="column2"><a class="links" target="_blank" href='#'>---</a></td>
+                  <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='#'>---</a></td>
+                </tr>
+      
+                <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 2</td>
+                  <td class="column100 column2" data-column="column1">Today, we'll learn about <strong>Random Forests</strong> which overcome some of the problems faced by Decision Trees.</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=_L39rN6gz7Y&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=46'>Random Forests<br> Videos (46 - 47)  <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.kaggle.com/learn/intro-to-machine-learning'>Intro to Machine Learning <br> [Kaggle Microcourse] <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='#'>---</a></td>
+                </tr>
+      
+                <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 3</td>
+                  <td class="column100 column2" data-column="column1">Diving deeper, we learn about <strong>Gradient Boosting</strong> which is a very powerful algorithm and forms the base for algorithms like XGBoost, LightGBM and CatBoost.</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=_L39rN6gz7Y&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=52'>Gradient Boosting <br> Videos (52 - 56) <i class="fas fa-external-link-alt"></i></a></li></td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank">---</a></td>
+                  <td class="column100 column5" data-column="column4"><a class="links" target="_blank">---</a></td>
+                </tr>
+      
+                <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 4</td>
+                  <td class="column100 column2" data-column="column1">Today, we learn about <strong>XGBoost</strong> which is a <strong>State-of-the-Art</strong> algorithm and has won many competitive data science hackathons.</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=_L39rN6gz7Y&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=62'>XGBoost <br>Videos (62 - 65)  <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='#'>---</a></td>
+                  <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='#'>---</a></td>   
+                </tr>
+  
+                <tr class="row100">
+                  <td class="column100 column1" data-column="column1">Day 5</td>
+                  <td class="column100 column2" data-column="column1">Now that we have covered the theory, let's learn how to use these powerful algorithms in practice.</td>
+                  <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://scikit-learn.org/dev/auto_examples/ensemble/plot_gradient_boosting_regression.html'>Gradient Boosting Regression  <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.kaggle.com/learn/intermediate-machine-learning'>Intermediate Machine Learning<br> [Kaggle Microcourse] <i class="fas fa-external-link-alt"></i></a></td>
+                  <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/'>Practical XGBoost, LightGBM, Catboost <br> (Optional)  <i class="fas fa-external-link-alt"></i></a></td>
+                </tr>
+      
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Assignments</td>
+              <td class="column100 column2" data-column="column1">Use the <strong>same email-ID</strong> that you registered with, and the <strong>SAME enrolment number</strong> as you received in the registration mail.<br><strong>Adhere to the honor code</strong>.</td>
+	      <td class="column100 column2" data-column="column2">Deadline: <br><strong>28th June 2021</strong>, 11:59 PM (IST)</td>
+              <td class="column100 column3" data-column="column3"><a class="links" target="_blank" href="https://drive.google.com/drive/folders/1J2fz81bOreC1Jq5TsTY5hKqw-oK-V9HL?usp=sharing">Week-4 Assignment <i class="fas fa-external-link-alt"></i></a><br><a class="links" target="_blank" href="https://forms.gle/wEkDpRX84q7fnRWv8">Week-4 Quiz <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column4">---</td>
+              </tr>
+              </tbody>
+      
+            </table>
+          </div>
+          <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+        </div>
+          </div>
+          </div>
+          </div>
+          <div id='week5' class="tabcontent">
+            <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+            <div class="table100 ver3 m-b-110">
+              <table data-vertable="ver3">
+                <thead>
+                  <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1">Week 5</th>
+                    <th class="column100 column2" data-column="column1">What's in there?</th>
+                    <th class="column100 column3" data-column="column2">Task 1</th>
+                    <th class="column100 column4" data-column="column3">Task 2</th>
+                    <th class="column100 column5" data-column="column4">Task 3</th>          
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 0</td>
+                    <td class="column100 column2" data-column="column1">Getting Started <br/> Follow two links on the right before proceeding</td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://caciitg.in/sa2020/setting_environment.html'>Setting up your Environent  <i class="fas fa-external-link-alt"></i>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://drive.google.com/file/d/1lqL2xTYAWE2mwXPXhXW1Ptz3sfhh7vPL/view?usp=sharing'>Enrollment Instructions for Coursera  <i class="fas fa-external-link-alt"></i>
+                    </a></td>
+                    <td class="column100 column5" data-column="column4">---</td>
+                  </tr>   -->
+      
+                  <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 1</td>
+                    <td class="column100 column2" data-column="column1"> Welcome to the final week of Learning, as next week is Capstone Project This week we will discuss <strong>Neural Networks</strong> and <strong>Unsupervised Learning</strong>. Today Let us go into the foundations of <strong>Neural Networks</strong></td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN'>Neural Networks<br> <strong>(8.1 - 9.8)</strong> <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='#'>----</a></td>
+                    <td class="column100 column5" data-column="column4"><a class="links" target="_blank" href='#'>----</a></td>
+                  </tr>
+        
+                  <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 2</td>
+                    <td class="column100 column2" data-column="column1">Today we will first get an intuitive understanding of how <strong>Neural Networks</strong> work and then implement a small Neural Network from scratch using Python </td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi'>Understanding Neural Networks  <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://youtu.be/ubgwaNhU5v8'>Neural Networks with Python <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='#'>----</a></td>
+                  </tr>
+        
+                  <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 3</td>
+                    <td class="column100 column2" data-column="column1">Today we will learn how to use the <strong>Keras</strong> library to implement Neural Networks. <strong>Keras</strong> is a popular Deep learning library which makes using Neural Networks very simple for us </td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.pluralsight.com/guides/regression-keras/'>Regression with Keras  <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://www.pluralsight.com/guides/classification-keras'>Classification with Keras <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='https://youtu.be/wQ8BIBpya2k'>Neural Networks with Keras </a></td>
+                  </tr>
+        
+                  <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 4</td>
+                    <td class="column100 column2" data-column="column1">Let us have a look at <strong>unsupervised learning</strong>, its uses and types. We will also look at one particular algorithm the <strong>K-means method</strong></td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://towardsdatascience.com/unsupervised-learning-and-data-clustering-eeecb78b422a'>Unsupervised Learning  <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://youtu.be/4b5d3muPQmA'> K-means Clustering <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='#'>----</a></td>
+
+                  </tr>
+    
+                  <tr class="row100">
+                    <td class="column100 column1" data-column="column1">Day 5</td>
+                    <td class="column100 column2" data-column="column1">Today we will discuss <strong>PCA</strong> and its application through <strong>scikit-learn</strong></td>
+                    <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN'>Dimensionality reduction(PCA) <br> <strong>14.1 - 14.7</strong>  <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column4" data-column="column3"><a class="links" target="_blank" href='https://youtu.be/QdBy02ExhGI'>PCA using sklearn <i class="fas fa-external-link-alt"></i></a></td>
+                    <td class="column100 column5" data-column="column4  "><a class="links" target="_blank" href='#'>----</a></td>
+                  </tr>
+        
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Assignments</td>
+              <td class="column100 column2" data-column="column1">Use the <strong>same email-ID</strong> that you registered with, and the <strong>SAME enrolment number</strong> as you received in the registration mail.<br><strong>Adhere to the honor code</strong>.</td>
+	      <td class="column100 column2" data-column="column2">Deadline: <br><strong>30th June 2021</strong>, 11:59 PM (IST)</td>
+              <td class="column100 column3" data-column="column3"><a class="links" target="_blank" href="https://drive.google.com/drive/folders/1CS-TBIhjXTyTiKlthnbe7pwEc_HOKYm8?usp=sharing">Week-5 Assignment <i class="fas fa-external-link-alt"></i></a><br><a class="links" target="_blank" href="https://forms.gle/2rPWEurZoHoRmHxF7">Week-5 Quiz <i class="fas fa-external-link-alt"></i></a></td>
+              <td class="column100 column4" data-column="column4">---</td>
+              </tr>
+                </tbody>
+        
+              </table>
+            </div>
+            <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+          </div>
+            </div>
+            </div>
+            </div>
+          
+            <div id='week6' class="tabcontent">
+              <div class="limiter">
+                <div class="container-table100">
+                  <div class="wrap-table100">
+              <div class="table100 ver3 m-b-110">
+                <table data-vertable="ver3">
+                  <thead>
+                    <tr class="row100 head">
+                      <th class="column100 column1" data-column="column1">Week 6</th>
+                      <th class="column100 column2" data-column="column1">Machine Learning Capstone Project </th>
+                      <th class="column100 column3" data-column="column2">Task 1</th>
+                      <!-- <th class="column100 column4" data-column="column3">Task 2</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row100">
+                      <td class="column100 column1" data-column="column1">Deadline:<br>  <strong>10th July 2021</strong></td>
+                      <td class="column100 column2" data-column="column1">
+                        Congratulations! You have completed this course on Data Science. You deserve some celebration. &#127881;&#127881; <br><br>
+                        This week we'll be attempting a <strong>Hackathon</strong> hosted by Summer Analytics team on <strong>DPhi</strong>. <br><br>
+                        DPhi is a community with a vision to build a culture of data through courses, practice, competitions and discussion forums, and gamify the entire learning experience. <br><br>
+                        After completing this project, you will learn to implement all the bits and bytes you learned during the course. <br><br><br>
+			<font style="font-size:1.5em;font-weight:700">RULES:</font><br><br>
+			&#9654; Register on the platform using the email-ID you used for registering to the course.<br><br>
+			&#9654; You are <strong>NOT</strong> allowed to team-up with others. Any violation of this may lead to removal from the course without certification.<br><br>
+			&#9654; Your "team" name <strong>MUST</strong> be your enrolment number, used up until now for the quizzes.<br><br>
+			&#9654; <a href="https://www.youtube.com/watch?v=ELkgiJD9KuM&t=63s" target="_blank">When life gives you lemons, don’t make lemonade. Make life take the lemons back!</a> Regardless of performance in the quizzes, give the hackathon your all - applying the concepts that you learnt throughout the course. Refer to the materials on the website if you need a refresher on any topic.<br><br>
+
+			<font style="font-size:1.2em;font-weight:700">All the best! &#10084;</font>
+                      </td>
+                      <!-- <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://www.youtube.com/watch?v=Gp_qv317Gew'>Introduction to Kaggle  <i class="fas fa-external-link-alt"></i> -->
+                      <td class="column100 column3" data-column="column2"><a class="links" target="_blank" href='https://dphi.tech/challenges/summer-analytics-capstone-project/135/overview/about'>Visit the hackathon page  <i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>  
+        
+                  </tbody>
+          
+                </table>
+              </div>
+              <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+            </div>
+              </div>
+              </div>
+              </div>
+
+              <div id='week7' class="tabcontent">
+                <div class="limiter">
+                  <div class="container-table100">
+                    <div class="wrap-table100">
+                <div class="table100 ver3 m-b-110">
+                  <table data-vertable="ver3">
+                    <thead>
+                      <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1">Topic</th>
+                        <th class="column100 column2" data-column="column1">Material Description</th>
+                        <th class="column100 column3" data-column="column2">Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Webinars</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                          Find links to the webinars organised as part of Summer Analytics '21. <br><br>
+
+                          Summer Analytics '21 presented for the first time, live sessions with industry mentors and professionals, to provide an overall learning experience blending the theoretical with the practical.<br><br>
+                          We brought 2 webinars to you this year, courtesy of <strong>DPhi</strong>. <br><br>Kick back and watch some of the industry's pros explain topics that will undoubtedly be a major part of your data science journey.<br>
+                        </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://www.youtube.com/watch?v=DZ82f6wk8T4'>Feature Engineering - Joinal Ahmed <i class="fas fa-external-link-alt"></i></a></li><br><br><br>
+                          <li><a class="links" target="_blank" href='https://www.youtube.com/watch?v=zq6L2l8lxiY'>Exploratory Data Analysis - Usha Rengaraju <i class="fas fa-external-link-alt"></i></a></li><br><br><br>
+                        </td>
+      
+                      </tr> 
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Module 1</strong> <br><br> <strong>Upload Date:</strong> 18<sup>th</sup> July 2021</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                          After giving an attempt to the hackathon, one question will stick to most of the minds here. How do I start? <br> <br>
+                          Well, you're not the only one struggling to find your way out. Most of us have faced similar problems when we attempt Kaggling for the first time. <br> <br>
+                          So here are some readings that explain a <strong>structured approach towards an ML problem</strong>. <br> <br>
+                          Needless to say, there is no hard and fast rule behind any approach. <br>
+                          It's an art, and you're the artist!
+                        </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://hackernoon.com/choosing-the-right-machine-learning-algorithm-68126944ce1f'>Reading 1  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://medium.com/@aravanshad/how-to-choose-machine-learning-algorithms-9a92a448e0df'>Reading 2  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://www.kaggle.com/vipulgandhi/how-to-choose-right-metric-for-evaluating-ml-model/notebook'>Reading 3  <i class="fas fa-external-link-alt"></i></a></li> 
+                        </td>
+      
+                      </tr>  
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Module 2</strong> <br><br> <strong>Upload Date:</strong> 18<sup>th</sup> July 2021</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                           This module comprises of very crucial readings that you should know. <br><br> Reading 1 is about a complete overview of any Data Science project. 
+                           It takes you through various concepts like hyperparameter tuning, fitting, improving data and more that will help you build a great model.<br><br>
+                           Reading 2 is more about extracting data using different methods and building a Data Science project from scratch to product level.
+                        </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://elitedatascience.com/machine-learning-iteration'>Machine Learing Iterations  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://www.freecodecamp.org/news/how-to-build-a-data-science-project-from-scratch-dc4f096a62a1/'>Building a Data Sciencce project from scratch  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                        </td>
+      
+                      </tr>  
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Module 3</strong> <br><br> <strong>Upload Date:</strong> 18<sup>th</sup> July 2021</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                           <strong> Handling Data </strong> <br>This module  consists of various blogs that takes you through art of dealing with data. We have been emphasizing a lot on EDA, that's how much important it is. 
+                            <br><br> Second reading introduces a very important concept of pipelines, this a very essential tool to clean and train model faster.
+                          </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4'>Handling Missing data  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://towardsdatascience.com/use-scikit-learn-pipelines-to-clean-data-and-train-models-faster-82a5171f50dc'>Scikit Pipelines  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://towardsdatascience.com/normalization-vs-standardization-quantitative-analysis-a91e8a79cebf'>Quantative Analysis  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://www.kdnuggets.com/2017/06/7-steps-mastering-data-preparation-python.html'>Mastering Data Preparation  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+
+                        </td>
+      
+                      </tr>  
+
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Module 4</strong> <br><br> <strong>Upload Date:</strong> 18<sup>th</sup> July 2021</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                           <strong> Feature Engineering </strong> <br> This module deeps dive in Feature Engineering. You must go through these blogs to brush up you concept to improve your score on the leaderboard.
+                          </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://blog.dominodatalab.com/manual-feature-engineering/'>Manual Feature Engineering  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/'>Feature Selection Methods  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://adataanalyst.com/machine-learning/comprehensive-guide-feature-engineering/'>Comprhensive Guide to Feature Engineering <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+
+                        </td>
+      
+                      </tr>  
+
+                      <tr class="row100">
+                        <td class="column100 column1" data-column="column1"><strong>Module 5</strong> <br><br> <strong>Upload Date:</strong> 18<sup>th</sup> July 2021</strong></td>
+                        <td class="column100 column2" data-column="column1">
+                           <strong> Training the model </strong> <br> 
+                           This module deals with the most consuding part of solving a Machine Learning problem. The following readings will take you through various Model Evalution, Model Selection, Feature Engineering
+                        </td>
+                        <td class="column100 column3" data-column="column2">
+                          <li><a class="links" target="_blank" href='https://sebastianraschka.com/blog/2016/model-evaluation-selection-part1.html'>Reading 1  <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+                          <li><a class="links" target="_blank" href='https://medium.com/data-design/how-to-not-be-dumb-at-applying-principal-component-analysis-pca-6c14de5b3c9d'> Reading 2 <i class="fas fa-external-link-alt"></i></a></li>  <br> <br> <br>
+
+                        </td>
+      
+                      </tr>  
+
+                    </tbody>
+            
+                  </table>
+                </div>
+                <!-- <a href="http://caciitg.in/sa2020/dashboard.html" class="instructions" target="_blank">Click here to visit the dashboard</a> -->
+              </div>
+                </div>
+                </div>
+                </div>
+
+<div class="register-box">
+         <h2 style="text-align: center; margin: 20px; font-size: 3em; color:#055F65"> Want to stay in the loop? </h2>
+         <br><p style="text-align: center; margin-bottom: 30px; margin-top: 0px;">Follow us on our social media handles to keep in touch:</p>
+    
+  <div class="fomo-links"> 
+    <a
+      href="https://www.linkedin.com/company/caciitg"
+      target="_blank"
+      class="btn contact-details"
+      style="color:#0077b5;font-family:tahoma;font-size:2em;text-decoration:none; margin-left:12%"
+      ><i class="fab fa-linkedin" style="color:#0077b5; vertical-align:middle; outline:none !important"></i> <font size='3'>LinkedIn</font></a>&emsp;
+    <a
+      id="profile-link"
+      href="https://www.instagram.com/caciitg/"
+      target="_blank"
+      class="btn contact-details"
+      style="color:#bc2a8d;font-family:tahoma;font-size:2em;text-decoration:none"
+      ><i class="fab fa-instagram" style="color:#bc2a8d; vertical-align:middle"></i> <font size='3'>Instagram</font></a>&emsp;
+    <a
+      id="profile-link"
+      href="https://github.com/caciitg"
+      target="_blank"
+      class="btn contact-details"
+      style="color:#333;font-family:tahoma;font-size:2em;text-decoration:none"
+      ><i class="fab fa-github" style="color:#333; vertical-align:middle"></i> <font size='3'>GitHub</font></a>&emsp;
+    <a
+      href="https://www.youtube.com/channel/UCPQIu6FXWE623QatJjXaWxg?sub_confirmation=1"
+      target="_blank"
+      class="btn contact-details"
+      style="color:#ff0000;font-family:tahoma;font-size:2em;text-decoration:none"
+      ><i class="fab fa-youtube" style="color:#ff0000; vertical-align:middle; outline:none !important"></i> <font size='3'>YouTube</font>&emsp;</a>
+    <a
+      id="profile-link"
+      href="https://fb.me/caciitg"
+      target="_blank"
+      class="btn contact-details"
+      style="color:#4267B2;font-family:tahoma;font-size:2em;text-decoration:none"
+      ><i class="fab fa-facebook" style="color:#4267B2; vertical-align:middle"></i> <font size='3'>Facebook</font></a>
+   </div> 
+   </div>
+
+</div>
+
+               
+              <script>
+                function openWeek(event, weekName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+            
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                }
+            
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(weekName).style.display = "block";
+                evt.currentTarget.className += " active";
+            
+            
+              }
+              document.getElementById("defaultOpen").click();
+          
+              </script>
+          
+   
+   
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

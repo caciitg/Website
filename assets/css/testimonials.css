@@ -1,0 +1,49 @@
+#carousel-t .testimonial-content {
+  margin-top: 15px;
+}
+
+#carousel-t .carousel-control-next, .carousel-control-prev {
+  width: 13%;
+}
+
+#carousel-t .carousel-indicators li {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 4px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: .3;
+  transition: opacity .6s ease;
+  border-radius: 10px;
+}
+
+#carousel-t .carousel-indicators .active {
+  opacity: .7;
+}
+
+#carousel-t .carousel-indicators {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+#carousel-t .signature {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0;
+}
+
+#carousel-t .date {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+

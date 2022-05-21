@@ -1,0 +1,6 @@
+form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(window.location.replace("success.html"))
+            .catch(error => console.error('Error!', error))
+        })

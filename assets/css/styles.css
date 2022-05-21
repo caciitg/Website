@@ -1,0 +1,8 @@
+body {
+  --bs-body-color: #ffffff;
+  --bs-body-bg: #000000;
+  font-family: Montserrat, sans-serif;
+  --bs-success: #20c997;
+  --bs-success-rgb: 32,201,151;
+}
+

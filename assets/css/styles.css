@@ -1,8 +1,57 @@
 body {
   --bs-body-color: #ffffff;
   --bs-body-bg: #000000;
-  font-family: Montserrat, sans-serif;
   --bs-success: #20c997;
   --bs-success-rgb: 32,201,151;
+  font-family: Montserrat, sans-serif;
+}
+
+@media (max-width: 480px) {
+  #logo {
+    max-height: 36px;
+  }
+}
+
+@media (min-width: 480px) {
+  #logo {
+    max-height: 44px;
+    /*padding-left: 24px;*/
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    width: 90%;
+  }
+}
+
+@media (min-width: 576px) {
+  #Introduction {
+    max-width: 90%;
+  }
+}
+
+#Intro-Paragraph {
+  font-weight: 500;
+}
+
+@media (min-width: 576px) {
+  #Follow {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 576px) {
+  #Event {
+    max-width: 1080px;
+  }
+}
+
+.btn {
+  font-weight: 500;
+}
+
+#event-pg {
+  font-weight: 500;
 }
 

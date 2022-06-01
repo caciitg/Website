@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>/alumni.html</loc>
+        <loc>https://iitg.ac.in/sa/caciitg/alumni.html</loc>
     </url>
     <url>
-        <loc>/</loc>
+        <loc>https://iitg.ac.in/sa/caciitg/form.html</loc>
     </url>
     <url>
-        <loc>/schedule.html</loc>
+        <loc>https://iitg.ac.in/sa/caciitg/</loc>
+    </url>
+    <url>
+        <loc>https://iitg.ac.in/sa/caciitg/schedule.html</loc>
+    </url>
+    <url>
+        <loc>https://iitg.ac.in/sa/caciitg/success.html</loc>
     </url>
 </urlset>

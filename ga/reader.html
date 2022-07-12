@@ -1,0 +1,686 @@
+<html><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Gradient Ascent 2022</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 2%;
+}
+@media only screen {
+	body {
+		margin: 0.5em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5a0e8fc4-37f2-431a-92b4-3dc3d8088790" class="page sans"><header><img class="page-cover-image" src="Gradient%20Ascent%202022%205a0e8fc437f2431a92b43dc3d8088790/Wave_5_1.svg" style="object-position:center 33.24%"/><h1 class="page-title">Gradient Ascent 2022</h1></header><div class="page-body"><h2 id="c5e1f1bb-d979-4fb0-951a-d83b40cad32f" class="">Resource</h2><table id="62127adf-fa2e-4aa4-bd92-23ee5878e91f" class="simple-table"><thead class="simple-table-header"><tr id="9798c919-fad5-4ad2-b87e-f878227c4d93"><th id="oJ&lt;^" class="block-color-default simple-table-header" style="width:312.0000305175781px">Topic</th><th id="_iQa" class="block-color-gray_background simple-table-header" style="width:150px">Link</th></tr></thead><tbody><tr id="0746fbfb-c4c5-4ef6-8501-1577d8056866"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Linear Algebra</td><td id="_iQa" class="" style="width:150px"><a href="https://cs229.stanford.edu/summer2019/cs229-linalg.pdf">Link</a></td></tr><tr id="15392000-9db1-4385-83dc-46cb5647fe81"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Stats / Probability</td><td id="_iQa" class="" style="width:150px"><a href="https://cs229.stanford.edu/summer2019/cs229-prob.pdf">Link</a></td></tr><tr id="a1dd126e-e2d5-46fb-9d84-bf4b46571c00"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">DeepLearning.AI Specialisation Course Notes</td><td id="_iQa" class="" style="width:150px"><a href="https://github.com/mbadry1/DeepLearning.ai-Summary">Link</a></td></tr><tr id="c9ab5fca-c79c-4885-bb1d-1f339801f709"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Linear Regression</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/everything-you-need-to-know-about-linear-regression-b791e8f4bd7a">Link</a></td></tr><tr id="6ee5c7f2-bad5-4488-8053-f2dff978752f"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Logistic Regression</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/introduction-to-logistic-regression-66248243c148">Link</a></td></tr><tr id="2451bdd0-f381-49ae-b26f-1974c6dd59ad"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Multi-Class vs Multi-Label Classification</td><td id="_iQa" class="" style="width:150px"><a href="https://www.analyticsvidhya.com/blog/2021/07/demystifying-the-difference-between-multi-class-and-multi-label-classification-problem-statements-in-deep-learning/">Link</a></td></tr><tr id="00899b09-44c3-40f6-8d22-71f973d68092"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Multi-Label Classification</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff">Link</a></td></tr><tr id="769f7df8-d6dc-417e-81d9-6a77065e386a"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Multi-Class Classification with Imbalanced Dataset</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/machine-learning-multiclass-classification-with-imbalanced-data-set-29f6a177c1a">Link</a></td></tr><tr id="35916f22-54c8-48e3-9915-12f3f752c47d"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Naive Bayes</td><td id="_iQa" class="" style="width:150px"><a href="https://www.kdnuggets.com/2020/06/naive-bayes-algorithm-everything.html">Link</a></td></tr><tr id="563343e9-395d-451b-8b24-deb770ddb5b4"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Bias Variance Trade-off</td><td id="_iQa" class="" style="width:150px"><a href="https://www.analyticsvidhya.com/blog/2020/08/bias-and-variance-tradeoff-machine-learning/">Link</a></td></tr><tr id="7279c3d6-5049-4f25-809c-681c8e67d3bb"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Support Vector Machine</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">Link</a></td></tr><tr id="3584ba57-6076-4ba5-a63c-f76b63cc6cbf"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Support Vector Machine Code</td><td id="_iQa" class="" style="width:150px"><a href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">Link</a></td></tr><tr id="dd032a87-c2ee-4811-94e6-4713a0a3b59f"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Ensemble Methods: Bagging, Boosting and Bootstrapping</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205">Link</a></td></tr><tr id="80b6367e-9882-4107-b378-f4fd638913bc"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Feature Engineering for ML Models</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/feature-engineering-for-machine-learning-3a5e293a5114">Link</a></td></tr><tr id="37e6c21e-5d73-4204-8f7b-ca5a305e5c00"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Principal Component Analysis</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/tidying-up-with-pca-an-introduction-to-principal-components-analysis-f876599af383">Link</a></td></tr><tr id="6065b2b3-1a27-4894-91fe-3b7c2195bfbb"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">T-distributed Stochastic Neighbor Embedding(t-SNE)</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/an-introduction-to-t-sne-with-python-example-5a3a293108d1">Link</a></td></tr><tr id="fe7cdfd6-c54d-4886-850c-2d13023245c6"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">K-means Clustering</td><td id="_iQa" class="" style="width:150px"><a href="https://www.javatpoint.com/k-means-clustering-algorithm-in-machine-learning">Link</a></td></tr><tr id="0ceebf76-576d-490f-83fe-e30c110c4168"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">K-means Clustering Code</td><td id="_iQa" class="" style="width:150px"><a href="https://realpython.com/k-means-clustering-python/">Link</a></td></tr><tr id="0cbe0639-2fe6-4e12-8863-1e033fdacb82"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">K-Nearest Neighbour(KNN)</td><td id="_iQa" class="" style="width:150px"><a href="https://www.javatpoint.com/k-nearest-neighbor-algorithm-for-machine-learning">Link</a></td></tr><tr id="0d88ac16-ce0b-49ab-ba77-d19e41a63dcc"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">KNN Code</td><td id="_iQa" class="" style="width:150px"><a href="https://www.geeksforgeeks.org/k-nearest-neighbor-algorithm-in-python/">Link</a></td></tr><tr id="a486453f-7dc5-42e4-beb1-f386546777b9"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Feature Engineering in Images</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/fast-feature-engineering-in-python-image-data-5d3a8a7bf616">Link</a></td></tr><tr id="1dba1e09-2fd3-4f40-ac1f-9130357b9355"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">All about Natural Language Processing( Watch according to your needs)</td><td id="_iQa" class="" style="width:150px"><a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVMdJ5sqbCK2LiM0HhQVWNzm">Link</a></td></tr><tr id="a5ab9b0d-2779-4c0d-be42-61fd939ffe31"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Feature Scaling </td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/all-about-feature-scaling-bcc0ad75cb35">Link</a></td></tr><tr id="56cf5a06-9f99-4dec-b73f-dba5025153f1"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Gaussian Distribution</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/6-ways-to-test-for-a-normal-distribution-which-one-to-use-9dcf47d8fa93">Link</a></td></tr><tr id="f91279a0-8d6a-40c4-8292-0a157106370c"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Mini-Batch Gradient Descent</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/stochastic-batch-and-mini-batch-gradient-descent-demystified-8b28978f7f5">Link</a></td></tr><tr id="e95468b1-5f3b-4089-ab72-207974438b6e"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Gradient Descent with Momentum</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/gradient-descent-with-momentum-59420f626c8f">Link</a></td></tr><tr id="c5330350-e7de-494c-b106-0607f2c563a2"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Grid Search</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/7-hyperparameter-optimization-techniques-every-data-scientist-should-know-12cdebe713da">Link</a></td></tr><tr id="c925f2c6-2b7d-417c-8067-70d6b2ddbc65"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Batch Normalization</td><td id="_iQa" class="" style="width:150px"><a href="https://towardsdatascience.com/batch-norm-explained-visually-how-it-works-and-why-neural-networks-need-it-b18919692739">Link</a></td></tr><tr id="1cb26e0c-b558-444e-afc4-9898042c79b1"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Recurrent Neural Network (RNN)</td><td id="_iQa" class="" style="width:150px"><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks">Link</a></td></tr><tr id="724a0978-84a0-4519-91bf-7dc4495404f5"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Long-Short Term Memory (LSTM)</td><td id="_iQa" class="" style="width:150px"><a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Link</a></td></tr><tr id="e54985b3-d981-4ccc-ba02-5b486f33e1c8"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Different Types of Losses and significance</td><td id="_iQa" class="" style="width:150px"><a href="https://www.analyticsvidhya.com/blog/2019/08/detailed-guide-7-loss-functions-machine-learning-python-code/">Link 1
+</a><br><a href="https://analyticsindiamag.com/loss-functions-in-deep-learning-an-overview/">Link 2</a><br>
+<a href="https://www.youtube.com/watch?v=e59u5YyuEfQ&amp;ab_channel=KrishNaik">Link 3</a><br>
+<a href="https://www.youtube.com/watch?v=E1yyaLRUnLo&amp;ab_channel=codebasics">Link 4</a></td></tr><tr id="61736f7b-c200-4f44-aab8-de915e264f33"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Evaluation Metrics and their significance in particular cases</td><td id="_iQa" class="" style="width:150px"><a href="https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/">Link 1</a><br>
+<a href="https://www.kdnuggets.com/2020/05/model-evaluation-metrics-machine-learning.html">Link 2</a><br>
+<a href="https://www.youtube.com/watch?v=aWAnNHXIKww&amp;list=PLZoTAELRMXVPBTrWtJkn3wWQxZkmTXGwe&amp;index=46&amp;ab_channel=KrishNaik">Link 3</a><br>
+<a href="https://www.youtube.com/watch?v=A_ZKMsZ3f3o&amp;list=PLZoTAELRMXVPBTrWtJkn3wWQxZkmTXGwe&amp;index=59&amp;ab_channel=KrishNaik">Link 4</a></td></tr><tr id="68bcb84c-381a-4226-a56b-7f1e5add1dff"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Regularization and Optimization Techniques (Blogs related to Andrew Ng DL Course 2)</td><td id="_iQa" class="" style="width:150px"><a href="https://www.deeplearning.ai/ai-notes/optimization/">Link 1</a><br>
+<a href="https://www.analyticsvidhya.com/blog/2018/04/fundamentals-deep-learning-regularization-techniques/">Link 2</a><br>
+<a href="https://github.com/mbadry1/DeepLearning.ai-Summary/blob/master/2-%20Improving%20Deep%20Neural%20Networks/Readme.md">Link 3</a></td></tr><tr id="c310466d-0e1b-4226-aad0-a822e32a49cb"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Ensemble Models</td><td id="_iQa" class="" style="width:150px"><a href="https://machinelearningmastery.com/tour-of-ensemble-learning-algorithms/">Link 1</a><br>
+<a href="https://www.analyticsvidhya.com/blog/2018/06/comprehensive-guide-for-ensemble-models/">Link 2</a><br>
+<a href="https://www.youtube.com/watch?v=CDewPfLV4Tc&amp;ab_channel=edureka%21">Link 3</a></td></tr><tr id="b1a291db-7f89-4286-b2ac-a5853552a23f"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Data Handling (Train, Dev and Test)</td><td id="_iQa" class="" style="width:150px"><a href="https://github.com/mbadry1/DeepLearning.ai-Summary/blob/master/3-%20Structuring%20Machine%20Learning%20Projects/Readme.md">Link 1</a><br>
+<a href="https://www.youtube.com/watch?v=fwY9Qv96DJY&amp;ab_channel=codebasics">Link 2</a><br>
+<a href="https://www.kdnuggets.com/2019/01/when-your-training-testing-data-different-distributions.html">Link 3</a></td></tr><tr id="e0e68f0d-f84f-4008-8240-2bee987ba266"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Machine Learning Case Studies</td><td id="_iQa" class="" style="width:150px"><a href="https://workera.ai/resources/machine-learning-case-study-interview">Link</a></td></tr><tr id="0108e00b-2c45-4c6a-970a-93bdee20c9d5"><td id="oJ&lt;^" class="block-color-default" style="width:312.0000305175781px">Interview Prep Playlist (Krish Naik) - Checkout his other relevant playlists too</td><td id="_iQa" class="" style="width:150px"><a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVM0zN0cgJrfT6TK2ypCpQdY">Link</a></td></tr></tbody></table>
+
+<h2 id="4169fb01-9a8d-4f4f-b096-a5f129efb525" class="">Interview Experiences</h2><ul id="fd8d280a-8454-4b87-8f27-77c8652ceb9c" class="toggle"><li><details open=""><summary>Amazon</summary><ul id="17a1591d-e9bf-4b88-92d6-d76450b9e5aa" class="block-color-yellow_background toggle"><li><details ><summary>Shortlisting</summary><p id="de32a060-2a7d-4a37-897f-059fde9768e6" class="block-color-yellow_background">30 July - 1 August: Amazon ML Challenge (<a href="https://www.hackerearth.com/challenges/competitive/amazon-ml-challenge/machine-learning/product-browse-node-classification-2-7ff04e5a/">Problem Statement</a>)</p><p id="dfeecaae-58df-45cf-bef4-d07b07f5e34c" class="block-color-yellow_background">4 August: Amazon ML Challenge Finale (Top 10 teams in the Hackathon)</p></details></li></ul><ul id="81ccb661-0601-4c1b-9021-08242ba3bdc3" class="toggle"><li><details><summary>Debarshi Chanda</summary><p id="7f83498a-dbbd-4e1e-8933-75e35e6aa30b" class="">LinkedIn : <a href="https://www.linkedin.com/in/debarshi-chanda/">Debarshi Chanda | LinkedIn</a></p><p id="a5a7f110-087e-49f3-8859-5d06ff77670f" class="block-color-blue_background">Role: Applied Scientist Intern</p><p id="95fbaadc-74dd-40c8-81ee-ae0be70a7ed9" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="3d420d54-d812-4f30-a020-c479c70e4d1f" class="block-color-yellow_background"><strong>Round 1: SDE Round (Coding/DSA)</strong></p><p id="d3cabf83-0b29-48e5-855f-40f02c363275" class="">TL;DR: Trees + DP</p><p id="dbcba478-d343-42da-8c3d-8fdf758559d2" class="">Duration ~ 45 mins </p><p id="c2be7941-60e2-4009-bbf4-5a22baa4f09d" class="">2 Questions</p><ul id="a15e0df5-536b-4947-bcc1-d5068f8dacd9" class="bulleted-list"><li style="list-style-type:disc"><strong>Write a function to print the Spiral Order Traversal of a Binary tree. </strong><p id="efd1f644-96b7-4740-835e-7f3b4412bce1" class="block-color-purple_background"><a href="https://www.youtube.com/watch?v=MoM3IzzaBpY&amp;list=PLupD_xFct8mETlGFlLVrwbLwcxczbgWRM&amp;index=9">Answer: Video Link</a></p><p id="c1f18574-5ebb-4f0a-b4d2-3f31ba5c4754" class="">Already knew the solution, said the solution using 2 stacks. Interviewer asked if the same can be implemented using a single queue.</p><p id="84651887-e78c-46ae-9824-a218801544f8" class="">Said about doubly ended queue but hadn’t used it before so told the interviewer honestly that I hadn’t used deques before. Went on to code the 2 stack solution</p></li></ul><ul id="389ed01d-6d2d-45f8-a63c-761ba566072c" class="bulleted-list"><li style="list-style-type:disc"><strong>An array is given, Find the length of the subarray having maximum sum.</strong><p id="d2f7efd1-fc49-4b3e-a1d1-eb14bb1f4582" class="">Told the Brute Force approach O(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>)</p><p id="411899c7-7e2c-4723-938b-30810c2f5a68" class="">Modified Kadane’s algorithm to maintain length of the array as well</p></li></ul><p id="aefd7aa8-ecb4-46a6-9816-e3081d2abbae" class="block-color-yellow_background"><strong>Round 2: ML Round</strong></p><p id="635ff232-4cbb-4a3b-b174-211e1cbb8171" class="">Interviewer will check your knowledge of ML Depth &amp; Breadth</p><p id="820cf40d-0683-42fa-ba45-2ff6f824fb95" class="">ML Depth: Project + ML Design ~ 30 minutes</p><p id="3cc58661-9712-49d8-ae31-1d1e0f42d9f7" class="">ML Breadth: ML Fundamentals ~ 40 minutes</p><p id="08fb576b-7d22-4393-8a8b-a87241116821" class="">Interviewer was constantly refining my thoughts and answers.</p><p id="cf39e805-585b-4354-9101-1ebfe96199a7" class=""><strong>Expect a lot of follow-up questions.</strong></p><p id="4ad545a8-c4f0-4192-8209-ed5a7cb89631" class="block-color-purple"><em>Discussion on Project (Amazon ML Challenge):</em></p><ul id="da0ca3c9-269d-4cb8-ac2f-8cbd7c412114" class="bulleted-list"><li style="list-style-type:disc">Explain Problem Statement of Amazon ML Challenge</li></ul><ul id="b2023f91-1563-4e94-849a-3fe5191da502" class="bulleted-list"><li style="list-style-type:disc">Explain the Approach, Follow-up: Mathematical formulation of Arcface, Told him didn’t know and gave the intuitive explanation.</li></ul><ul id="fa673957-0f88-439e-b645-c7968a8355cc" class="bulleted-list"><li style="list-style-type:disc">Asked me about the performance of various models we tried. Follow-up: XLNet performed better than BERT. Why? Said about Masked Language Modelling vs Permuted Language Modelling.</li></ul><p id="4eda2a90-ad64-4f00-b3af-e901bf71022a" class="block-color-purple"><em>ML Design (Interviewer said that there was no right or wrong answer):</em></p><ul id="857f1bb9-20c7-4ab2-8c16-8260094e6bc2" class="bulleted-list"><li style="list-style-type:disc">Suppose you want to use all the columns (Title, Description, Bullet Points). What can you do?<ul id="80aa14ec-d69a-4e62-b1e9-4897616729a4" class="bulleted-list"><li style="list-style-type:circle">1st Design: Use 3 BERT models for the 3 columns respectively, concatenate embeddings and use a fully connected layer.</li></ul><ul id="7fee4367-c4af-4ff3-b353-629275c37692" class="bulleted-list"><li style="list-style-type:circle">2nd Design: Use 1 BERT and use [SEP] token as a separator between different columns.</li></ul></li></ul><ul id="ae41936e-fb06-4a21-8743-558b39813eba" class="bulleted-list"><li style="list-style-type:disc">Pros and Cons of Both the design.</li></ul><ul id="0b3b6243-4311-4478-b098-15d64bc3267f" class="bulleted-list"><li style="list-style-type:disc">Which model will you choose for your leaderboard? 1st</li></ul><ul id="303838fe-2082-4943-a743-7fcdf49ee10d" class="bulleted-list"><li style="list-style-type:disc">Is there any case when the 2nd model will outperform the 1st model? When the columns have a similar distribution.</li></ul><ul id="613f4c40-708f-455a-bf50-05c29c7f85b0" class="bulleted-list"><li style="list-style-type:disc">Which model should we use if we only have 3000 rows instead of 30 lakh?</li></ul><p id="f3559880-8869-425f-8e26-36056fcdaedb" class="block-color-purple"><em>ML Fundamentals:</em></p><ul id="d8d1fcc5-fadd-4cf6-a023-c3577bcbb4f4" class="bulleted-list"><li style="list-style-type:disc">Metrics: Suggest a metric other than accuracy. F1-score. Follow-up: Define F1-score. Define Precision or recall. How would you calculate F1-score for 10000 classes?</li></ul><ul id="581eb0a0-42dd-44ce-ad5f-a38906cac03c" class="bulleted-list"><li style="list-style-type:disc">Suggest something other than F1-score. AUC score. Follow-up: Define AUC. Statistical significance of AUC.</li></ul><ul id="52684147-69cd-4e35-9109-f221d75898df" class="bulleted-list"><li style="list-style-type:disc">Regularization in NN: Dropout, How to deal with different behavior of dropout in train and test time. Scaling.</li></ul><ul id="1a19da98-7f7e-43c0-8d96-d194e50d1559" class="bulleted-list"><li style="list-style-type:disc">Batch-Normalization: What is Batch-Normalization, Why is it useful? Same scale and minimize covariate shift.</li></ul><ul id="6f1766b6-4f0e-4aea-845e-f1e6d280351a" class="bulleted-list"><li style="list-style-type:disc">Difference between SGD, Batch Gradient Descent and Mini-batch Gradient Descent.</li></ul><ul id="457fc046-d3da-4fc8-988f-1ab13d245a48" class="bulleted-list"><li style="list-style-type:disc">Why does mini-batch GD and SGD work despite only using a very small number of samples? Come from the same distribution. Follow-up: How can we check the quality of this estimate? Mean and standard deviation can be a good way to check quality. Is this estimate biased or unbiased? How to get an unbiased estimate?</li></ul><ul id="8f91d974-f168-4f90-8610-d7008c9d6b1f" class="bulleted-list"><li style="list-style-type:disc">Linear Models: Difference between L1 and  L2 regularization. Why L1 induces sparsity and L2 doesn’t? Why use L2 at all?</li></ul><ul id="5a20d43c-da5c-412c-a61f-64c7d1829d96" class="bulleted-list"><li style="list-style-type:disc">Can linear models overfit to the training data, it is just a line. (Outliers)</li></ul><ul id="06cc6253-3be4-4a09-8c85-cc89da95fb4e" class="bulleted-list"><li style="list-style-type:disc">Unsupervised: Tell any Unsupervised learning algorithm to decompose 10000 dimensions in 10. PCA. Explain PCA in 2 lines. How do you get the eigenvectors? You have the 10 eigenvectors, now how do you convert the 10000 dimensions to these 10 dimensions.</li></ul></details></li></ul><ul id="52b8a52c-218f-4211-ae59-585a80eb04ec" class="toggle"><li><details><summary>Shreya Sajal</summary><p id="9e3e68c6-fd37-49a3-a34c-9e5def64c8aa" class="">LinkedIn : <a href="https://www.linkedin.com/in/shreyasajal/">Shreya Sajal | LinkedIn</a></p><p id="69305b21-3ad9-4841-9e2f-bd209dbdad5e" class="block-color-blue_background">Role: Applied Scientist Intern</p><p id="1d4ba8a6-9a06-4016-b87c-ee03d710f6c3" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="f4673931-b3cb-4c02-b173-31eeefdf7671" class="block-color-yellow_background"><strong>Round 1: SDE Round (Coding/DSA)</strong></p><p id="b7d5dc30-aa5b-43e7-b151-f5d9c068cd15" class="">Duration ~ 45 mins</p><p id="284a5d5d-16a6-48a5-8311-84302e51353a" class="">2 DSA questions, interviewer shared the link to the live coding platform. Fortunately I was able to solve both.</p><ul id="446ee7b2-d8ee-4511-87eb-17a3918307da" class="bulleted-list"><li style="list-style-type:disc">Intro</li></ul><ul id="90c1028a-566d-4e94-8f08-ada6077586f1" class="bulleted-list"><li style="list-style-type:disc">Longest Common Substring (brute force, then explained DP approach, Time-space complexity, code and dry run)</li></ul><ul id="6aafac51-ede4-4ef9-8777-06aaecd5ae83" class="bulleted-list"><li style="list-style-type:disc">Density of Binary Tree in one traversal (started thinking using DFS but BFS approached clicked at the right moment, wrote the code)</li></ul><p id="2794e0a3-b17f-4184-8462-a68ff1c4feb1" class="block-color-yellow_background"><strong>Round 2: ML Round</strong></p><p id="476ff9d1-cf29-4b63-913c-d68796c04d31" class="">Duration ~ 1 h 10 mins</p><p id="4dab2c02-81b5-4084-beeb-866371122e59" class="">The interviewer started with his intro, he was a Senior Applied Scientist at Amazon and he mainly worked in the NLP domain.</p><ul id="1862747a-efaf-483b-a29b-2f20100adcd6" class="bulleted-list"><li style="list-style-type:disc">Moved onto my intro, ML exposure overview, Brief overview of 2 CV projects + Amazon ML Challenge approach and my contribution.</li></ul><ul id="17149944-8fcd-4bd6-8219-74abe908319b" class="bulleted-list"><li style="list-style-type:disc">Went on with discussion on my Amazon ML Challenge approach further as we had used 2 approaches (End-to-End Classification and Transformer model head with KNN, and and ensemble for the final predictions):<ul id="058d1169-9b25-4e02-b581-949e9cae0465" class="bulleted-list"><li style="list-style-type:circle">What was KNN over embeddings exactly doing (Inference time Euclidean distance calculation and voting)</li></ul><ul id="6203755a-8f02-4e2c-9ac8-bdca3071c9ba" class="bulleted-list"><li style="list-style-type:circle">How did you train 3M points? (Stratified K-Fold)</li></ul><ul id="b4919fe4-1802-475e-88d5-4e1ea94f3daf" class="bulleted-list"><li style="list-style-type:circle">If you didn’t have any memory limitations and could train all the points, then I claim End-to-End Classification should work better than KNN + embeddings. Justify my claim. (He assumed that the extracted embeddings were not finetuned and we were directly using the pretrained weights for embedding extraction, so I just justified it based on his assumption only as it was easier that way)</li></ul><ul id="de8ab87e-a1e2-4058-8a01-60f020988041" class="bulleted-list"><li style="list-style-type:circle">If the <code>max_length</code> was some fixed value for your classification model that couldn’t be changed and text length &gt; <code>max_length</code> what would you do? (Trim- info loss, so best I could come up with text length // <code>max_length</code> rows for one row with labels same for training, max vote for segments during inference, he seemed satisfied)</li></ul><ul id="250fcc0d-d8d8-4ed6-914e-9ed26d21fd66" class="bulleted-list"><li style="list-style-type:circle">What else could you have done if there was no such time limit for the hackathon? (Stack embeddings + KNN and few more points from our Future prospects sections mainly)</li></ul><ul id="e584e5b7-9da8-4aa6-8c72-8f21b5e1bd53" class="bulleted-list"><li style="list-style-type:circle">What if you were not allowed to use BERT or any transformer based models? (I explained him a solution using Bi-LSTM many-to-one, the main focus was on the basic architecture not much depth into the u, f, o gates, and also he focused on the output dimensions and loss function for training)</li></ul><ul id="fbf845de-fe5a-425c-8de4-c0a1c654533f" class="bulleted-list"><li style="list-style-type:circle">What if it was multilabel and not multiclass? (He mainly wanted to know the output layer dimensions, activations and loss function to be used)</li></ul><ul id="96dfb74d-f152-4033-a952-2725f4b10d27" class="bulleted-list"><li style="list-style-type:circle">How are word embeddings trained? As I had mentioned about word embeddings in my Bi-LSTM approach, he wanted me to explain the training of any word embedding of my choice. (I explained him word2vec both skipgram and CBOW variants, how is the input output taken and last layer activations mainly)<p id="c1cc5310-996c-4f31-a16b-5bad151e7da0" class="">Follow-Ups: If the vocab is very large then the training will be very expensive because the softmax denominator was to be calculated over the entire vector? How is that dealt? (I mentioned hierarchical softmax is used as a solution to this but I didn’t know how it works exactly so couldn’t tell that)</p></li></ul><ul id="c0fa52a0-3748-4d95-9c8f-720adf8de1e6" class="bulleted-list"><li style="list-style-type:circle">You have a sentence and you have to do POS tagging for every word in that (3 POS were there noun, verb and pronoun. I started with basic RNN approach and explained, again the main focus was on output activations, dimensions and loss function at every time step)</li></ul><ul id="93d3d1e1-844e-43f0-9e5a-a1c5df604cb6" class="bulleted-list"><li style="list-style-type:circle">Design a search engine for Amazon, you have product descriptions and a text query given. (I explained a sentence embedding + semantic similarity + ranking approach, he was satisfied)<p id="12f0d453-656a-4f7e-af46-a86f2c8f1b53" class="">Follow-Ups: What if you had a binary column as well for every product? (I first said that we can multiply each row’s binary with it’s cosine similarity we had calculated, so the disliked one’s get filtered, he said it was okay as a baseline but there will be some info loss in this, I then said we can change the weight from 0 to 1 and from 1 to 2, then none of the rows will be completely lost and the not similar-liked would not get an edge over the similar-disliked ones mostly, he sounded satisfied)</p></li></ul><ul id="3374db16-23cd-42bc-92c5-050f82d53d25" class="bulleted-list"><li style="list-style-type:circle">Explain BERT architecture (I explained mainly how it is trained and the tasks it is trained on- NSP and MLM and the input it takes, input word embeddings and some basic transformer encoder stack attention overview, he was satisfied)<p id="d31c40d8-d5c7-420e-9c54-95bc4eb24980" class="">Follow-Ups: What is masked language model? What if the masking was not done? (I couldn’t answer) What is language modelling?</p></li></ul></li></ul></details></li></ul></details></li></ul><ul id="cda19fcf-2085-41a5-849f-9a33bcf94ab3" class="toggle"><li><details open=""><summary>Microsoft</summary><ul id="6125560f-e843-4672-b7fb-e9655a036bfe" class="block-color-yellow_background toggle"><li><details ><summary>Shortlisting</summary><p id="4fbb7fd2-6089-4c91-b791-123ad7d97e7d" class="block-color-yellow_background">Coding Test:</p><ul id="58662d51-875f-4b1c-983c-0718eec9028a" class="block-color-yellow_background bulleted-list"><li style="list-style-type:disc">Section 1 (Python): Write a custom distance function (in python) based on a given formula to be used for the KNN algorithm of sklearn. This was an easy question solved by almost everyone. No knowledge of sklearn was necessary.</li></ul><ul id="36800752-1afa-40c8-a13b-4776a71f64a4" class="block-color-yellow_background bulleted-list"><li style="list-style-type:disc">Section 2 (Sklearn): This was a very lengthy question. We were given test and training datasets on which we had to train a Decision tree classifier (all parameters given) and get predictions. We also had to do this while using Cross-validation and identify the best model (from K folds) and store the best parameters of those models. There were many such complicated tasks. While we were allowed to use the documentation and try the code on our local machine, being familiar with the documentation of sklearn is very important.</li></ul><ul id="144bfc7f-e32a-4d7d-852b-6311380b08ab" class="block-color-yellow_background bulleted-list"><li style="list-style-type:disc">Section 3 (MCQs): 17 MCQs on ML, confusion matrix etc. No questions from DL, Probability, Statistics. Easy.</li></ul></details></li></ul><ul id="e7b8d3b2-54ce-4f2d-8495-a4baa079c4a8" class="toggle"><li><details ><summary>Arsh Kandroo</summary><p id="04b765fa-7fba-4ef3-912a-55ca2111a7e9" class="">LinkedIn : <a href="https://www.linkedin.com/in/arsh2/">Arsh Kandroo | LinkedIn</a></p><p id="8b400a4b-9a14-41fb-b635-e6f07cfdff08" class="block-color-blue_background">Role: Data Scientist</p><p id="74c5a8b4-9b42-46a1-a1d9-6d5859808430" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="c61afe5a-48d8-4dd3-bbd1-cc76f77c210b" class="block-color-yellow_background"><strong>Round 1</strong></p><p id="a01b567f-466f-4965-93e8-6b87a946453f" class="">Duration ~ 55 mins</p><ul id="7a0d1665-9b6f-4602-a950-3c6b0ccf80ac" class="bulleted-list"><li style="list-style-type:disc">Picked up a project from my resume, and asked me to explain the approach. Inquired about the model that I used and how it works, which was XGBoost.</li></ul><ul id="dba57c71-6d95-4b0e-854c-2102674274b7" class="bulleted-list"><li style="list-style-type:disc">Basic questions on Gradient Descent (slope of derivative etc)</li></ul><ul id="b9e69be4-2a0c-46d8-b9a3-375dc01f6809" class="bulleted-list"><li style="list-style-type:disc">Asked me to share the screen and write the formula for Gradient Descent optimization with momentum. Further, he asked questions about the intuition of the same and the significance of every term in the formula. Moving ahead, he asked me to recursively open up the formula and asked some questions based on that.</li></ul><ul id="d843433a-df91-43f2-9750-d821d9e252f3" class="bulleted-list"><li style="list-style-type:disc">Basic questions about Mean, Variance and their formulas.</li></ul><ul id="3cebd8b5-2da6-4814-91a9-fcfaa2aa014d" class="bulleted-list"><li style="list-style-type:disc">Eigenvalues and Eigenvectors, positive definite matrix and Hessian matrix.</li></ul><ul id="c9c0134b-fe5a-4d48-bd2d-d48120d90b40" class="bulleted-list"><li style="list-style-type:disc">Lastly, he asked me to share my screen again and code the function for cosine similarity between two vectors.</li></ul><ul id="e78265d9-5b93-40ea-a052-496bbbcef8e2" class="bulleted-list"><li style="list-style-type:disc">Interview ended with me asking him about his projects and stuff.</li></ul><p id="81aa4782-5304-4c84-bbae-813702fc7a95" class="">This guy’s camera was off and didn’t seem jovial. So, I tried to talk to him in the end about his projects and work to ease things off a bit.</p><p id="4107c11d-c012-4535-af76-f837e3c50eea" class="block-color-yellow_background"><strong>Round 2</strong></p><p id="5cc9446d-5c59-4137-b101-00babe9677d1" class="">Duration ~ 50 mins</p><ul id="528c12b6-3f7d-45d8-9ff9-1fadeb3fef27" class="bulleted-list"><li style="list-style-type:disc">Discussed 2 projects from my resume thoroughly, from motivation to the models used. Make sure you know the functioning and intuition behind each and every model or the library that you have used in the project. Since one of my projects was based on NLP, which resulted in him asking me questions about BERT and LSTMs. Also, there were some questions based on shortcomings of the project; make sure you have already tapped them and you should know how to overcome them.</li></ul><ul id="0826d557-3501-47e4-b926-08b8dfe37bcd" class="bulleted-list"><li style="list-style-type:disc">Gave me a situation in which I’ve to classify queries on a search engine as technical or not. Told him my approach and the models that I could use for better results.</li></ul><ul id="a657ec6f-1d23-441d-aacc-8355c9e8351f" class="bulleted-list"><li style="list-style-type:disc">Asked me to share my screen and gave me a small DataFrame. He wanted me to implement an easy method in pandas on the DataFrame. Though my answer wasn’t what he was expecting but he was satisfied.</li></ul><ul id="4f176828-bc82-4df5-9374-517efefc6382" class="bulleted-list"><li style="list-style-type:disc">Again, the interview ended with me asking him about his work in the MS and what team he has been working under.</li></ul><p id="912610de-8f30-4d24-9e77-12268281234a" class="">This guy was really cool. Smiled throughout the interview. He had done his MTech in Data Science from IIT Madras. Also, we talked about his journey in MS.</p><p id="fd8f2414-1c7a-4ed7-95a6-0293bf660c84" class="block-color-yellow_background"><strong>Round 3</strong></p><ul id="a675a56a-6ef9-4deb-b41f-6be17c71ca42" class="bulleted-list"><li style="list-style-type:disc">Started with him asking me about my journey in ML and explaining all my projects in chronological order</li></ul><ul id="27a6bf13-08a2-4309-ad31-5c1215a52709" class="bulleted-list"><li style="list-style-type:disc">He picked up a project from my resume and asked me to tell its shortcomings and how’d I handle them.</li></ul><ul id="54f6e1c7-f8dd-46eb-b4a6-fb2affdb96b2" class="bulleted-list"><li style="list-style-type:disc">Gave me an ML case study. <p id="99b776e3-5e82-4f13-84ea-a5b0bbfc92c4" class="">“Whenever we search diseases related to symptoms on a search engine, it may show us extreme diseases on top, hiding the real disease. We want to develop an app when given symptoms as input shows us all the probable diseases along with their probabilities.” </p><p id="036893ae-1f72-4daa-98c6-42b0a4c02bb9" class="">I explained my approach from data collection to deployment. He asked me the challenges I’ll face and how will I handle them.</p></li></ul><ul id="74c85ca1-be70-427e-9266-d27e1347d12d" class="bulleted-list"><li style="list-style-type:disc">Towards the end, we talked about life at MS and the projects that he had worked on. Also, I asked him for feedback of my interviews, which turned out to be pretty good.</li></ul><p id="b2c927c1-7e6e-4f2e-bb97-3131ebfd3342" class="">This guy was really cool as well with 17 years of experience at MS.</p><p id="4aa0d56c-91f7-4a09-9483-6cbf1f4833d8" class="block-color-pink_background">General Tips:</p><ul id="2368f629-641f-4340-96dc-ef7d58765ba9" class="bulleted-list"><li style="list-style-type:disc">Whenever explaining your approach, make sure you start from the beginning like data collection and move ahead step by step towards data cleaning, preprocessing, model development and metrics.</li></ul><ul id="e113b17a-cb69-4954-b490-36be6f482583" class="bulleted-list"><li style="list-style-type:disc">Make sure to tap the shortcomings of your project beforehand and the answers to tackle them.</li></ul><ul id="788a2f89-80a5-467e-aaf3-a02ef41f7884" class="bulleted-list"><li style="list-style-type:disc">Communicate clearly and try to discuss thoughts with your interviewer. He/She will definitely guide you towards the correct answer.</li></ul></details></li></ul><ul id="5189f84c-faaf-42c5-a609-642cd8c0e436" class="toggle"><li><details><summary>Roshan Shaji</summary><p id="bfcd2019-9b18-46b2-8bc7-7745b01bb3b0" class="">LinkedIn : <a href="https://www.linkedin.com/in/roshan-shaji/">Roshan Shaji | LinkedIn</a></p><p id="8a8efa46-b276-4944-9331-dce5079ae22e" class="block-color-blue_background">Role: Data Scientist</p><p id="8e282fbb-6af6-4d07-a48f-b225378c36fd" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="e7ba4aac-ba8c-4d1d-8a15-e70ceaade088" class="block-color-yellow_background"><strong>Round 1</strong></p><p id="cd6b63dd-c6a8-4585-8482-475464630047" class="">Duration ~ 40 mins</p><ul id="3f5d34aa-2c48-4fa1-bd8e-f9cf32e41a82" class="bulleted-list"><li style="list-style-type:disc">First asked me about one of my projects. Described what it was, when it was done(as part of Summer Analytics ka final hackathon). Described what was special about the data(duplicates, class imbalance). Told him I used SMOTE to solve the imbalance. Described how it works in brief. He asked a counter question, which was actually one of the drawbacks of the SMOTE method.</li></ul><ul id="7648ef7f-d924-4247-9476-6b7487776b6e" class="bulleted-list"><li style="list-style-type:disc">Asked if I know Python. Said yes, but not OOPS. Asked me to code a basic function on Notepad (find cosine similarity between two vectors).</li></ul><ul id="2e021c8c-b760-499f-9a6f-1edee79c1395" class="bulleted-list"><li style="list-style-type:disc">Asked me about momentum in gradient descent. I did not remember the formula(and I told him that). Opened Paint and drew the diagram of what momentum does. He realized I knew how it works, so he told me the formula and asked me to explain why momentum works(i.e. Why those mathematical formulas speed up gradient descent). After a few hints, I was able to solve it.</li></ul><ul id="ce1771e4-bf13-46f0-8c2d-d5ef78c43e22" class="bulleted-list"><li style="list-style-type:disc">Asked a question on statistics, was not able to answer it satisfactorily so he moved on. Asked me to write the formula for expectation, variance of a Continuous Random Variable.</li></ul><ul id="3c5a3940-c655-4578-a3e3-8c99d1fe9e89" class="bulleted-list"><li style="list-style-type:disc">Asked me if I have any questions for him, I asked him about the work he does.</li></ul><p id="a5d85f41-088b-4645-87d5-0bd01f679520" class="block-color-yellow_background"><strong>Round 2</strong></p><ul id="a71baa83-a05f-4c8c-a63c-736cf881a963" class="bulleted-list"><li style="list-style-type:disc">Chillest interview ever. Interviewer was a friendly, young guy. Asked me to describe one of my projects and what I had done(data cleaning). Explained the scraping and cleaning part in detail.</li></ul><ul id="e7236258-16f4-4735-b1c1-8f03906d9da6" class="bulleted-list"><li style="list-style-type:disc">What is supervised, unsupervised, semi-supervised. Give a real life example of supervised(eg: learning what each color is called)</li></ul><ul id="b69cbdf8-b4d9-4299-9477-bd923b4d90b2" class="bulleted-list"><li style="list-style-type:disc">Explain bias and variance. Explained it, and drew the graph of bias-variance tradeoff.</li></ul><ul id="dcc9873b-8e11-4139-90a5-d433f7cd5bae" class="bulleted-list"><li style="list-style-type:disc">What are activation functions? Why use them? List the common ones.</li></ul><ul id="abcc27a8-6f66-445f-bd94-61de254ece17" class="bulleted-list"><li style="list-style-type:disc">Gave me a diagram showing some data in 2 dimensions, asked if I would use logistic regression or decision trees for classification. The key was that the data points were not linearly separable.</li></ul><ul id="699c00eb-9d7d-4109-85d6-b38f76ca5518" class="bulleted-list"><li style="list-style-type:disc">Suppose you want to detect diabetes, cancer, heart disease etc. using neural networks.<p id="cc63d65c-525d-4364-a9ad-2d1a16c0be78" class="">A person could have multiple diseases. Do you build one model for each disease or one model to detect all the diseases? Why?</p></li></ul><ul id="2106a08c-cdab-4000-a952-7d704babf85e" class="bulleted-list"><li style="list-style-type:disc"><strong>Most interesting question</strong>: Given the weight, length, region and color of a mushroom, predict if it is poisonous. For such questions, make sure to ask questions(do we already have the data? If yes, do we have a lot of data? Do we have time and resource constraints? etc.). Told him my approach, how I&#x27;d preprocess(nulls, duplicates, outliers), what model I&#x27;d use(and which ones you would not), and why. Make your thought process known to the interviewer. Communicate.</li></ul><ul id="15971491-3025-49d4-8346-2693cc5c2c39" class="bulleted-list"><li style="list-style-type:disc">Then he asked if I had questions. I asked him what work he does, how interns are allotted teams, and what an intern’s day looks like.</li></ul><p id="a78e8f8a-6820-4ec9-b6b3-65bc585fcc42" class="block-color-yellow_background"><strong>Round 3</strong></p><ul id="61f34bee-1c14-492a-87fd-b7999879df28" class="bulleted-list"><li style="list-style-type:disc">This guy was the boss of my second interviewer. Again, very chill. Asked me to give an intro. Told him how I started doing ML(because I like math). He then asked me why I still stuck to ML after one year. While answering this, I made sure to talk about Microsoft for brownie points :D</li></ul><ul id="7bed2eef-b744-40c1-b93d-240bfd484fb4" class="bulleted-list"><li style="list-style-type:disc">This interview was discussion-based, with him giving me a problem to solve. I had to describe the entire pipeline, from obtaining data, to model selection and tuning, to deployment. He asked questions in between. Asked me how I’d assess my product. Had a brief discussion on that. Discussed additional features I could create. He seemed satisfied, and said we were done(25 mins into the interview). Then he asked me if I had questions for him. Asked him about the work he does, his opinion on things like AutoML, Github CoPilot etc, and finally asked for feedback. In the end, it was clear to me that I was through.</li></ul><p id="4fc06867-7f23-42b9-8876-8517fa1f50c1" class="">This guy was really cool as well with 17 years of experience at MS.</p><p id="6059f3dc-75e0-4a3f-a078-39e5af575ecc" class="block-color-pink_background">General Tips:</p><ul id="582000c1-c3a4-4624-af6e-12d816b2b9c5" class="bulleted-list"><li style="list-style-type:disc">Do not fool around if you do not know something. Tell them you do not know it, they’ll help you.</li></ul><ul id="ed5c1d44-70d4-4ef9-8d42-e8e83c6964a6" class="bulleted-list"><li style="list-style-type:disc">Communicate clearly. Explain all your ideas.</li></ul><ul id="8b8f8e59-e144-49d5-b96e-a5b8065a8f45" class="bulleted-list"><li style="list-style-type:disc">Be yourself, do not act fake. The interviewers want you to do well, they are not your enemies.</li></ul></details></li></ul><ul id="5925823d-e043-4b84-a0d4-890b903f0f5f" class="toggle"><li><details><summary>Rishon D’ Souza</summary><p id="027e90cd-6d67-47eb-be37-7ec9aa4a1d15" class="">LinkedIn : <a href="https://www.linkedin.com/in/rishon-dsouza/">Rishon Dsouza | LinkedIn</a></p><p id="04730973-32b7-4e7d-a9c8-35144b626a2a" class="block-color-blue_background">Role: Data Scientist</p><p id="33d06701-cb07-472b-bf2f-0efc6827c8b9" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="f797086e-2c3b-422f-abb7-a771775e9cbc" class="block-color-yellow_background"><strong>Round 1</strong></p><p id="540348ec-5ba2-445e-9659-8a439083fe19" class="">There were 2 parts to the interview: coding and machine learning.</p><p id="2ab3664f-f618-4796-8494-b446eb493633" class=""><strong>Coding section</strong>: Very standard parentheses matching question based on the stack DS was asked (<a href="https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/">https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/</a>). I was asked to code it.</p><p id="e43fa422-9c16-4950-ae62-1e9412c2cf16" class=""><strong>Machine Learning section</strong>: In this section you control the interview. He asks you whether you are familiar with a topic and then questions you based on the terms you use while explaining the topic. They asked me to explain Linear &amp; Logistic regression. Since this was a very basic question I was expected to go into the advanced mathematical ideas of it. Some topics discussed were-</p><ul id="e4fbffb4-7330-4001-bf55-b755ae090c9c" class="bulleted-list"><li style="list-style-type:disc">Type of problems LR solves</li></ul><ul id="18e9dfa3-dde0-4694-b8be-0e186f9dfcf1" class="bulleted-list"><li style="list-style-type:disc">Probabilistic Interpretation (Maximum Likelihood Estimate)</li></ul><ul id="764cbc47-7189-480c-8fa3-7e8488aa04bf" class="bulleted-list"><li style="list-style-type:disc">Polynomial LR</li></ul><ul id="493e1f2c-a2be-45bc-ad9c-377419a4774d" class="bulleted-list"><li style="list-style-type:disc">Assumptions made when using LR</li></ul><ul id="fa1beba8-f966-4328-b95e-c4187d88f81c" class="bulleted-list"><li style="list-style-type:disc">Loss function used and why</li></ul><ul id="d53a74c2-2626-435a-b41a-6581aa1ddbbf" class="bulleted-list"><li style="list-style-type:disc">Closed form analytic solution</li></ul><ul id="76de2a8d-04a2-4e4d-beab-8cc41d84b0f7" class="bulleted-list"><li style="list-style-type:disc">Gradient descent (all types/optimizers)</li></ul><ul id="87e706f6-3341-467d-95ae-7ce0a83f715f" class="bulleted-list"><li style="list-style-type:disc">Convex optimization problems</li></ul><ul id="9265af99-7db0-44f9-813b-125c077ebe1d" class="bulleted-list"><li style="list-style-type:disc">Bias Variance</li></ul><ul id="a6cbd440-b395-4d91-905f-88ad2f0f0f4d" class="bulleted-list"><li style="list-style-type:disc">Metrics used in classification</li></ul><p id="78a00c62-4af2-4330-9fc2-ca81fe2a3094" class="block-color-yellow_background"><strong>Round 2</strong></p><p id="ab723262-d0fb-43f1-9e2e-56c599c4797f" class="">This interview while technical didn’t go into direct theory questions in ML. These were application based questions designed to test innovative thinking and good practices as a practical data scientist. Question was open-ended. You were expected to ask for further clarifications. Ask as many questions as you want and modify your approach based on how the interviewer responds. Every step of the problem you solve the interviewer throws in another piece of the problem.</p><p id="422815f4-7ca9-46d7-be60-a6370612a8dc" class=""><strong>Question-</strong> You are a wildlife photographer and you have captured 20 million photos with 5 million photos from each continent. A lot of the photos are random trees, grass etc. There could be multiple photos of the same species. Devise a system (taking the scale of the problem in mind) to identify exotic species (species not seen before in that continent). You also have a wildlife expert at your disposal for consultation. However, being a human he can only look at a limited number of photos and charges about 500rs per photograph given for consultation.</p><p id="1f0b8c5e-e366-4771-8ace-dd68a4161894" class=""><strong>My approach-</strong> This was a complicated question and required several clarifications. It has to be solved respecting the scale (compute capabilities given size of dataset) and integrity (accuracy and non-redundancy) of the problem.</p><p id="af26e143-2da4-470d-ab71-10db5d9bf085" class="">I used a pre-trained CNN (removing the last few layers) to extract features from the images. Then used the unrolled feature vectors on a clustering algorithm to form object clumps of the same type. This way similar species and unwanted images(like grass) are grouped. Taking a representative from each group we can manually weed out the bad clusters. Now we can use the expert. Interviewer then added a constraint that you can only ask the expert 10 questions. Here we further reduce the clusters to only the “exotic” species of that continent by using Anomaly Detection (using Gaussian similarity).</p><p id="085f68f6-3be2-4fcc-9682-7f1c8029e892" class="block-color-yellow_background"><strong>Round 3</strong></p><p id="643d4c9e-0e7c-4c70-bc0d-ec55fccf750b" class="">This was the final interview taken by the head of the ML division. This was a mix of an HR and Technical interview. We went deep into my projects (about 30 min). Since my projects had a visual component I offered to run them in front of him. He also asked how I would approach building a chat bot for IITG freshers. I had to mention what sort of data I would need, where I would collect the data from and what features I would add. He didn&#x27;t expect theoretical knowledge of NLP, just wanted to know my thinking process and creativity. Overall this interview relied on soft-skills and thinking out loud.</p><p id="b8e8ca0d-1b08-439f-be10-8bfa2fbe7c10" class="block-color-pink_background">General Tips:</p><ul id="063014d0-0ead-43a4-9060-b296ae2ad9d6" class="bulleted-list"><li style="list-style-type:disc">Don’t try to specifically prepare for a test as formats and topics asked could wildly differ. Prepare in general for ML by doing courses and projects. The skills you learn on the way (sklearn, git, dbms) will be tested.</li></ul><ul id="49e65fb2-11a1-47f5-bf89-71e5969e6fed" class="bulleted-list"><li style="list-style-type:disc">Don’t use terms you are not familiar with. Most interviews are cross-questioning based rather than a fixed set of questions. ML is a large field; be honest if you&#x27;ve not worked on a specific area.</li></ul><ul id="13c5d561-81bb-4be0-aedd-975b1fa44928" class="bulleted-list"><li style="list-style-type:disc">Ask questions and think out loud.</li></ul><ul id="c2fc710d-97f6-42db-8e67-648317d605c7" class="bulleted-list"><li style="list-style-type:disc">At the end of the interview they will ask if you have any questions for them. Ask as many questions as you can. This shows interest and sincerity.</li></ul></details></li></ul></details></li></ul><ul id="103e9b43-d43f-4e81-a81e-48e8d07d5437" class="toggle"><li><details open=""><summary>Fractal Analytics</summary><ul id="2b08457f-c8a9-4175-8e56-b8b8d00811ec" class="toggle"><li><details><summary>Ishant Khurana</summary><p id="1f7427a1-1037-4a7a-8325-1275bba4a65a" class="">LinkedIn : <a href="https://www.linkedin.com/in/ishantkhurana3011/">Ishant khurana | LinkedIn</a></p><p id="133ba4e5-8dc7-4312-9f79-3463d3a7ae04" class="block-color-blue_background">Role: Imagineer (Trainee Data Scientist)</p><p id="1ca57814-41ce-4f68-8e59-039906d3e986" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="02d41074-24ba-4fd6-b988-f15891ef1b14" class="block-color-yellow_background"><strong>Round 1(Aptitude Test and Coding Test)</strong></p><p id="21a5ffa9-ad27-4145-8b68-1b4539e227b2" class="">In the first step of this round, we have to solve some basic Aptitude questions</p><ul id="96ded0d7-fac9-4da4-972f-e8104858d6e2" class="bulleted-list"><li style="list-style-type:disc">The test contains 70 Aptitude questions, separated by 4 sections ( in 75 min ) Data Analysis, Reasoning Ability, Quantitative Ability, and Verbal Ability.</li></ul><p id="a0792015-f042-4dde-bb39-3d79d403dc23" class="">(According to me, this is the first and most important part of the interview process as you have to divide your time wisely and should invest your time in the right questions, else you can waste a lot of it.)</p><p id="d811076e-336e-4396-a6bc-43f05b773727" class="">In the next step, we have to solve three programming questions</p><ul id="297f2b65-dc56-4798-8b1e-f12e9eb53b09" class="bulleted-list"><li style="list-style-type:disc">There are 3 coding problems, level of these problems is medium level, there’s one more thing that you have to solve these questions in some specific language, (you can’t use C++ or C) ( in my case the language we are supposed to do code was python)</li></ul><p id="5dc86b50-6258-4ff3-9f3e-82e72d77d002" class="">(This is an elimination round, so please be sure you do all the three questions else your chances are less to get selected for the further interview process.)</p><p id="05801ed8-e5e6-4899-94b4-e280e180c827" class="block-color-yellow_background"><strong>Round 2( Technical Interview )</strong></p><p id="ee627bee-5e4a-4d0e-adb2-1ac5110c2615" class="">This interview round lasted for around 30 minutes. Most of the questions were related to my projects. They are expecting that you should have detailed information about your project, from it’s codebase to it’s working. Then the interviewer asked me some simple probability and stats problems, kinda medium level.</p><p id="28990872-3a7e-4fa0-a22d-b3f3371e3ac0" class="">(In this round they just check your confidence and your knowledge in the things you showed in your resume. Be prepared with a nice Introduction for yourself, to set a good tone for the interview at the start.)</p><p id="77f8f6ba-497f-4065-bdbe-2a8e8292cdee" class="block-color-yellow_background"><strong>Round 3( HR Interview )</strong></p><p id="26db733e-651b-4e01-9363-9cff5a71c354" class="">This is the last round of the interview progress. In this round too first there’s a bit of question on my projects. After that it’s all normal HR round questions.</p><p id="7b88e2d8-2255-4630-bcea-be3d26c14a51" class="">(In both rounds (2 &amp; 3) don’t try to act too smart if you are wrong somewhere just accept it and always show that you are a learner.)</p></details></li></ul><ul id="dfd92150-d4f5-420f-929f-69a37b1f6702" class="toggle"><li><details><summary>Aryan Meshram</summary><p id="037bf16e-2fff-477c-b751-5f752cf2f7c8" class="">LinkedIn : <a href="https://www.linkedin.com/in/aryanm22/">Aryan Meshram | LinkedIn</a></p><p id="9eeb1cb0-9530-41a5-a48c-36ecb8f56820" class="block-color-blue_background">Role: Imagineer (Trainee Data Scientist)</p><p id="a2495173-3b5c-4875-a310-1421c6c385ca" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="15ed6ab0-9340-429c-97ec-2282ceb71b71" class="block-color-yellow_background"><strong>Round 1(Aptitude Test and Coding Test)</strong></p><ul id="06d751ae-92a4-429b-8b7a-53cfd4556ed1" class="bulleted-list"><li style="list-style-type:disc">It was an online test consisting of two rounds. First round was an aptitude test which had questions of logical reasoning, mathematical thinking, English as well as statistics.</li></ul><ul id="c0fed3fb-7452-4709-b0e6-8d57014463bf" class="bulleted-list"><li style="list-style-type:disc">Second round was a coding round which had moderate to tough questions. I was able to solve 2 out of 3 questions.</li></ul><ul id="f38280b1-1ae7-4c4c-8233-aefafc415711" class="bulleted-list"><li style="list-style-type:disc">My performance in the coding round was enough to make me believe that I would not get selected (once again) for sure.</li></ul><p id="46282c08-ea99-4afb-b9ca-6798e2d765e8" class="block-color-yellow_background"><strong>Round 2( Technical Interview )</strong></p><ul id="f2529840-9204-428b-a3c9-0115592ca6eb" class="bulleted-list"><li style="list-style-type:disc">Technical round was the one I was most scared of. It was a 15 minute round (much to my relief that I would not be asked to code a question). I nervously joined the call at 4 pm. </li></ul><ul id="0427a0f8-de95-45e2-a4d5-77209cd899ef" class="bulleted-list"><li style="list-style-type:disc">The interviewer was a man who didn’t turn on his video. He started off with my introduction. I introduced myself and told him the past experience I had in DL. Much to my amusement he asked me about the <em>second project</em> I had in my CV.  I explained to him whatever I could. He seemed satisfied and based on my answers he asked me some basics of neural networks, loss function, gradient descent etc. </li></ul><ul id="c9a051ae-9e4f-4c32-9206-838a597d2913" class="bulleted-list"><li style="list-style-type:disc">By the time I finished my answer, time had already ended for my interview and seeing his hurriedness, I chose not to ask him any questions at the end (which I regretted a lot at that time).</li></ul><p id="d666635d-0401-4ed7-b00d-4769a2fa6766" class="block-color-yellow_background"><strong>Round 3( HR Interview )</strong></p><ul id="502d0013-cb81-46d2-bd2f-2ba8bfdfe764" class="bulleted-list"><li style="list-style-type:disc">This was a very interesting round. The interviewer was a lady who asked me to introduce myself. After she heard my prepared answer, she started a casual conversation about me, how my friends thought of me, my hobbies, what makes me different, what expectations I had from the company, where do I see myself in the next five years etc.</li></ul><ul id="cada904a-4c20-405f-9bb5-fae34527332e" class="bulleted-list"><li style="list-style-type:disc">This time I made sure to ask a question or two before leaving. Well… I made a blunder ! I asked the wrong question. The interviewer was also perplexed when I asked her about the time when the company got listed on the Fortune 500 list. Actually, the company is NOT in the Fortune 500 list !!! She ended the call ending all the expectations I had before the interview.</li></ul></details></li></ul></details></li></ul><ul id="65d7faee-c12d-4774-bd8e-a9f3279e3c09" class="toggle"><li><details open=""><summary>Adobe</summary><ul id="36484ed5-fe43-4199-8fb2-4aa1261efd80" class="toggle"><li><details><summary>Varun Yerram</summary><p id="716b239b-1b76-497f-b3d0-32c37c602d8d" class="">LinkedIn : <a href="https://www.linkedin.com/in/yvarun25221/">Varun Yerram | LinkedIn</a></p><p id="dbe25f10-cb3c-4553-ac8f-7721e384ad56" class="block-color-blue_background">Role: MDSR Intern</p><p id="ba3d6255-c5f7-45af-bcd5-63fa2743bdf9" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="655b62e1-1127-4f9d-8936-89e7f976e1b6" class="block-color-yellow_background"><strong>Round 1: ML Round</strong></p><p id="36fe2cde-de7d-4646-97c5-bc007fd00319" class="block-color-purple"><em>Aptitude, Probability and Statistics:</em></p><ul id="8626c455-3130-4777-b0a7-7dd389395cdc" class="bulleted-list"><li style="list-style-type:disc">Explanation of one of the projects, with cross questions on it.</li></ul><ul id="b88508db-ad53-45c0-a361-2c84554ab96b" class="bulleted-list"><li style="list-style-type:disc">From a stream of input numbers, find the following at any point of time:<ul id="42478e04-3251-408f-a46b-53c705ce25fb" class="bulleted-list"><li style="list-style-type:circle">Mean</li></ul><ul id="df896e1d-17ee-4445-ad21-584cfc50687f" class="bulleted-list"><li style="list-style-type:circle">Variance</li></ul><ul id="84c70e5f-4213-44f5-9c88-05a79fa47b97" class="bulleted-list"><li style="list-style-type:circle">A Sample number from the stream with probability 1/n (n = number of numbers read)</li></ul></li></ul><ul id="c01e5c75-e97a-415e-8c55-6071d7bcec5e" class="bulleted-list"><li style="list-style-type:disc">Given an unbiased coin, design an experiment to select one of the three numbers uniformly:<ul id="58014358-7b70-480f-b2a7-0e48601bb6f1" class="bulleted-list"><li style="list-style-type:circle">Follow up - what type of distribution will it form.</li></ul><ul id="138f1d6c-1aa7-4348-9c25-27b0e620521c" class="bulleted-list"><li style="list-style-type:circle">Follow up - Calculate the probability mathematically and prove that it converges to 1/3.</li></ul></li></ul><ul id="4491885f-f35c-48ad-9bac-5816cb8ef321" class="bulleted-list"><li style="list-style-type:disc">Given a sequence of heads, calculate and find the number of times you need to flip to get HH.</li></ul><ul id="83dfc2f8-f690-4df1-acba-4048d668e40e" class="bulleted-list"><li style="list-style-type:disc">Given a matrix where rows and columns are sorted independently, design an algorithm to search a number in an optimal way.(O(2n) i.e. O(n) possible)</li></ul><ul id="3852ab5a-0f59-4156-9ed9-fbe46aaff2ae" class="bulleted-list"><li style="list-style-type:disc">Given an unknown matrix A(nxn). You are allowed to choose a column vector X (nx1) and get the output result. What is the minimum number of times, you need to choose vectors to know the values of the complete matrix (Ans - n)</li></ul><p id="f1a2add6-d76d-4519-babd-74e138bae113" class="block-color-purple"><em>ML/AI Questions Based on Project:</em></p><ul id="32021854-b239-438a-ace8-a49e60f68c8c" class="bulleted-list"><li style="list-style-type:disc">Explain cross connections in UNET and what is the difference between them and residual connections in ResNet.</li></ul><ul id="40b9f584-8b07-4799-b546-fa9b099639c6" class="bulleted-list"><li style="list-style-type:disc">Are the parameters shared in a Unet encoder and Unet Decoder, what is the effect of sharing them?</li></ul><ul id="def83efb-a6de-4bb9-9cf2-277c3fc975a8" class="bulleted-list"><li style="list-style-type:disc">Explain Backward pass of Unet, more specifically how do gradients propagate through decoder to encoder.</li></ul><p id="352e3f3d-3a76-410f-9c98-45485b73d33e" class="block-color-purple"><em>ML/AI Questions:</em></p><ul id="229ff032-bfe2-44f8-b542-b1ba7fa695a3" class="bulleted-list"><li style="list-style-type:disc">Given an RGB Image, and 64 kernels of 5x5 size. You apply the convolution operation with stride 2 and padding 0. What is the number of weights that are updated in every pass of the model? How will the answer change if you add bias to convolutions?</li></ul><ul id="589c60b5-0c80-45bb-8b67-0338cd804c17" class="bulleted-list"><li style="list-style-type:disc">Imagine you have a GPU and you are training convolutional networks, the GPU can fit a maximum batch size of 64 images at a time. You need to reproduce a paper in which they have used a batch size of 128 images. How would you do it? (Ans - Explain gradient accumulation in detail)</li></ul><ul id="0225f221-797a-4247-b691-da4827e24397" class="bulleted-list"><li style="list-style-type:disc">What does loss.backward() do in pytorch? how will its functioning change in the above question. (Depending on your choice of framework question may vary)</li></ul><ul id="6a1b0cf0-3e57-4af8-ad72-d83c669146db" class="bulleted-list"><li style="list-style-type:disc">At last I was asked to explain an NLP project I had done, as he had an NLP background.</li></ul></details></li></ul></details></li></ul><ul id="90408d86-f59c-4d05-809b-e5beee3c670b" class="toggle"><li><details open=""><summary>Envestnet Yodlee</summary><ul id="e9c164d5-6a64-4f64-a10d-33d1ec5bfc80" class="toggle"><li><details><summary>Pranjal Verma</summary><p id="d510bdeb-7997-4835-ba88-7b1762ec405d" class="">LinkedIn : <a href="https://www.linkedin.com/in/pranjal-verma-bb6746199/">Pranjal Verma | LinkedIn</a></p><p id="a11bb76a-fd50-4c5d-8d71-0a4d08098aa8" class="block-color-blue_background">Role: Project Trainee (Data Science)</p><p id="53b12130-8827-4322-a880-ad2a3df82858" class=""><strong>INTERVIEW PROCESS:</strong></p><p id="820ff284-2b97-4588-a5e8-4418d3a55049" class="block-color-yellow_background"><strong>Round 1</strong></p><ul id="fb4c52f3-eb3b-44b3-9f01-96cafa4db0d8" class="bulleted-list"><li style="list-style-type:disc">Sort numbers in an array</li></ul><ul id="cf998f1f-74fc-4ef0-a9a8-ffd29e648762" class="bulleted-list"><li style="list-style-type:disc">Select all those cells in the data frame under given conditions and change the value of only those</li></ul><ul id="631bb708-7d3d-4970-b9e6-53ff3d443d4a" class="bulleted-list"><li style="list-style-type:disc">Reverse the string using a one-liner</li></ul><ul id="ffec6047-4f37-4b11-8cec-53e10357cfd2" class="bulleted-list"><li style="list-style-type:disc">How to deal with Missing data?</li></ul><ul id="9047a577-42aa-42bc-80bb-38a30ce9cc66" class="bulleted-list"><li style="list-style-type:disc">Techniques one can use to find outliers, and how do we treat them?</li></ul><ul id="a78ec27e-ce83-4c9a-b29a-1a572b93306a" class="bulleted-list"><li style="list-style-type:disc">Some technical questions about seasonality, trends in a time series data, and how to find them?</li></ul><ul id="b188b2be-6c53-4fda-95df-8a1d532ef9f5" class="bulleted-list"><li style="list-style-type:disc">What is True positive, false negative, sensitivity, recall?</li></ul><ul id="d753a5f5-4ba8-4586-aea5-cecbce5dd71e" class="bulleted-list"><li style="list-style-type:disc">Define one case when a recall is preferred over precision and explain regularization.</li></ul><ul id="220324b7-7d6d-43ff-82ad-8d22a94ba548" class="bulleted-list"><li style="list-style-type:disc">Explain the working of Random forest</li></ul><ul id="18e08ce6-d5fc-4354-8f72-50fbd70a3f4c" class="bulleted-list"><li style="list-style-type:disc">Explain the working of linear regression and how the loss is calculated?</li></ul><ul id="159372fe-9690-4abf-b3dd-e2f17f1c3f1d" class="bulleted-list"><li style="list-style-type:disc">Name some of the charts and explain the boxplot</li></ul><ul id="b63b4dc4-7744-4ad6-a30c-17ab2fe6ccca" class="bulleted-list"><li style="list-style-type:disc">Rest all were resume-based</li></ul><p id="fa70bd4b-7263-4321-90c5-e9731040cc24" class="">
+</p></details></li></ul></details></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0a916f52-5750-447f-a762-985b26008c9b"><div style="font-size:1.5em"><img class="icon" src="Gradient%20Ascent%202022%205a0e8fc437f2431a92b43dc3d8088790/LogoWithoutName.svg"/></div><div style="width:100%">Consulting &amp; Analytics Club, IIT Guwahati  |  Cover Image by Vecteezy</div></figure><p id="d148162d-4783-4248-8769-40ee1d4dc198" class="">
+</p></div></article></body></html>

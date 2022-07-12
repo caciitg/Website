@@ -1,0 +1,63 @@
+@media (max-width: 800px) {
+  #c2 {
+    display: none;
+  }
+}
+
+@media (max-width: 444px) {
+  #Logo {
+    display: none;
+  }
+}
+
+.typewriter {
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  border-right: 3px solid white;
+  white-space: nowrap;
+  animation: blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+.gradient-text {
+  background-color: #f3ec78;
+  background-image: linear-gradient(45deg, #A1FF58, #4BFFC9);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+@media (min-width: 500px) {
+  #about-pg {
+    margin-left: 44px;
+  }
+}
+
+.fit-cover {
+  object-fit: cover;
+}
+

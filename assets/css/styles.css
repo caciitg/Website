@@ -20,7 +20,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .navbar {
+  #main-nav {
     width: 90%;
   }
 }
@@ -53,5 +53,17 @@ body {
 
 #event-pg {
   font-weight: 500;
+}
+
+@media (min-width: 992px) {
+  #Resources {
+    background: url("../../assets/img/CoverEarth.png");
+  }
+}
+
+@media (min-width: 992px) {
+  #rcard {
+    padding-left: 24px;
+  }
 }
 

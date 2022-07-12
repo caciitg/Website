@@ -2,11 +2,6 @@
   object-fit: cover;
 }
 
-#home {
-  background: url("../../assets/img/C&A%20BG%20-%20Credit_RDGraphics.png") no-repeat;
-  background-size: cover;
-}
-
 #navcol-1 {
   font-weight: 500;
 }
